@@ -118,53 +118,141 @@
         <div class="card p-4 h-100 text-center">
           <h3>Cells and Microbiology</h3>
           <p>Learn about the building blocks of life, cell structures, and functions.</p>
-          <a href="#" class="btn btn-outline-primary">Start Learning</a>
+          <a href="#question1" class="btn btn-outline-primary">Test Yourself</a>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card p-4 h-100 text-center">
           <h3>Genetics</h3>
           <p>Discover the principles of inheritance and DNA.</p>
-          <a href="#" class="btn btn-outline-primary">Start Learning</a>
+          <a href="#question2" class="btn btn-outline-primary">Test Yourself</a>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card p-4 h-100 text-center">
           <h3>Ecology</h3>
           <p>Understand ecosystems, food chains, and the impact of human activity.</p>
-          <a href="#" class="btn btn-outline-primary">Start Learning</a>
+          <a href="#question3" class="btn btn-outline-primary">Test Yourself</a>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card p-4 h-100 text-center">
           <h3>Human Anatomy</h3>
           <p>Explore the human body, organs, and organ systems.</p>
-          <a href="#" class="btn btn-outline-primary">Start Learning</a>
+          <a href="#question4" class="btn btn-outline-primary">Test Yourself</a>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card p-4 h-100 text-center">
           <h3>Plant Biology</h3>
           <p>Dive into the world of plants, photosynthesis, and plant reproduction.</p>
-          <a href="#" class="btn btn-outline-primary">Start Learning</a>
+          <a href="#question5" class="btn btn-outline-primary">Test Yourself</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 WebDev Academy. All rights reserved.</p>
-  </footer>
+  <!-- Questions Section -->
+  <section class="container py-5" id="questions">
+    <h2 class="text-center">Biology Quiz</h2>
 
-  <!-- JavaScript -->
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
-    }
-  </script>
+    <!-- Question 1: Cells and Microbiology -->
+    <div id="question1" class="card p-4 mt-4">
+      <h4>1. What is the function of mitochondria in a cell?</h4>
+      <form>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question1" value="A">
+          <label class="form-check-label">A) Energy production</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question1" value="B">
+          <label class="form-check-label">B) Protein synthesis</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question1" value="C">
+          <label class="form-check-label">C) DNA replication</label>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
+      </form>
+    </div>
 
-</body>
-</html>
+    <!-- Question 2: Genetics -->
+    <div id="question2" class="card p-4 mt-4">
+      <h4>2. What is a gene?</h4>
+      <form>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question2" value="A">
+          <label class="form-check-label">A) A piece of DNA that codes for a specific protein</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question2" value="B">
+          <label class="form-check-label">B) A type of cell organelle</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question2" value="C">
+          <label class="form-check-label">C) A type of lipid</label>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
+      </form>
+    </div>
+
+    <!-- Question 3: Ecology -->
+    <div id="question3" class="card p-4 mt-4">
+      <h4>3. Which of the following is an example of a producer in an ecosystem?</h4>
+      <form>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question3" value="A">
+          <label class="form-check-label">A) Rabbit</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question3" value="B">
+          <label class="form-check-label">B) Oak tree</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question3" value="C">
+          <label class="form-check-label">C) Fox</label>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
+      </form>
+    </div>
+
+    <!-- Question 4: Human Anatomy -->
+    <div id="question4" class="card p-4 mt-4">
+      <h4>4. Which organ is responsible for pumping blood throughout the body?</h4>
+      <form>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question4" value="A">
+          <label class="form-check-label">A) Heart</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question4" value="B">
+          <label class="form-check-label">B) Lungs</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question4" value="C">
+          <label class="form-check-label">C) Liver</label>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
+      </form>
+    </div>
+
+    <!-- Question 5: Plant Biology -->
+    <div id="question5" class="card p-4 mt-4">
+      <h4>5. What process do plants use to make food?</h4>
+      <form>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="question5" value="A">
+          <label class="form-check-label">A) Photosynthesis</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="question5" value="B">
+      <label class="form-check-label">B) Respiration</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="question5" value="C">
+      <label class="form-check-label">C) Digestion</label>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
+  </form>
+</div>
+</section> <!-- Footer --> <footer> <p>&copy; 2025 WebDev Academy. All rights reserved.</p> </footer> <!-- JavaScript --> <script> function toggleTheme() { const html = document.documentElement; const currentTheme = html.getAttribute('data-theme'); html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark'); } </script> </body> </html>
