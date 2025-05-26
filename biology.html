@@ -1,48 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<!DOCTYPE html>
-<nav class="navbar navbar-expand-lg px-4">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="index.html">WebDev Academy</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="math.html">Mathematics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="english.html">English</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="biology.html">Biology</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="history.html">History</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="geography.html">Geography</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="feedback.html">Feedback</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTELLECT | Premium GCSE Tutoring</title>
+    <title>Biology | INTELLECT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* ---------- Global Styles ---------- */
         :root {
             --primary-dark: #0A2463;
             --primary: #1E3A8A;
@@ -62,536 +25,159 @@
             --dark: #F9FAFB;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--light);
-            color: var(--dark);
-            transition: var(--transition);
-        }
-
-        /* ---------- Animations ---------- */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--accent); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* ---------- Header & Navigation ---------- */
-        header {
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background: var(--light);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-dark), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        /* ---------- Auth Buttons ---------- */
-        .auth-btn {
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid;
-            cursor: pointer;
-        }
-
-        #loginBtn {
-            background: var(--primary-dark);
-            color: white !important;
-            border-color: var(--primary-dark);
-        }
-
-        #signupHeaderBtn {
-            background: white;
-            color: var(--primary-dark) !important;
-            border-color: white;
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-        }
-
-        .typing-animation {
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 20px auto;
-            letter-spacing: 2px;
-            border-right: 2px solid var(--accent);
-            animation: 
-                typing 3.5s steps(40, end),
-                blink-caret 0.75s step-end infinite;
-        }
-
-        /* ---------- About Section ---------- */
-        .about-section {
-            padding: 5rem 2rem;
-            background: rgba(10, 36, 99, 0.05);
-        }
-
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        /* ---------- Subject Cards ---------- */
-        .subject-grid {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .subject-card {
+        .chapter-card {
             background: var(--light);
             border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
             transition: var(--transition);
-            text-align: center;
         }
 
-        .subject-card:hover {
+        .chapter-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
         }
 
-        /* ---------- Contact Section ---------- */
-        .contact-info {
+        .quiz-item {
             background: rgba(10, 36, 99, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem auto;
-            max-width: 1200px;
-        }
-
-        /* ---------- Auth Modal ---------- */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-        }
-
-        .modal-content {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 15px;
-            max-width: 400px;
-            margin: 5% auto;
-            position: relative;
-        }
-
-        .welcome-message {
-            display: none;
-            padding: 20px;
-            background: rgba(16, 185, 129, 0.1);
+            padding: 1.5rem;
+            margin: 1rem 0;
             border-radius: 10px;
-            margin-top: 20px;
         }
 
-        .typing-effect {
-            overflow: hidden;
-            border-right: 2px solid var(--accent);
-            white-space: nowrap;
-            animation: 
-                typing 2s steps(40, end),
-                blink-caret 0.75s step-end;
+        .answer-btn {
+            background: var(--light-blue);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        /* ---------- Footer ---------- */
-        footer {
-            background: var(--primary-dark);
+        .answer-btn:hover {
+            background: var(--accent);
             color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
+            transform: scale(1.05);
         }
 
-        /* ---------- Responsive Design ---------- */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: flex-end;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-        }
+        .correct { background: #4CAF50 !important; color: white; }
+        .incorrect { background: #f44336 !important; color: white; }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo">INTELLECT</div>
             <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#subjects">Subjects</a>
-                <a href="#contact">Contact</a>
-                <button id="loginBtn" class="auth-btn">Login</button>
-                <button id="signupHeaderBtn" class="auth-btn">Sign Up</button>
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#subjects">Subjects</a>
+                <a href="index.html#contact">Contact</a>
+                <button class="auth-btn">Login</button>
+                <button class="auth-btn">Sign Up</button>
                 <button class="theme-toggle" id="themeToggle">🌓</button>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="hero-content">
-            <h1>Premium GCSE Tutoring</h1>
+            <h1>GCSE Biology</h1>
             <div class="typing-animation">
-                A one-on-one tutorial session to help you excel in your studies
+                Explore life processes from cellular to ecosystem levels
             </div>
         </div>
     </section>
 
-  <div class="container py-5">
-    <h1 class="mb-4">English GCSE Tutorial</h1>
+    <main class="container py-5">
+        <!-- Chapter 1 -->
+        <div class="chapter-card">
+            <div class="chapter-header">
+                <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800" 
+                     alt="Cell Biology" 
+                     class="chapter-image">
+                <h2>Chapter 1: Cellular Biology</h2>
+            </div>
+            <div class="chapter-content">
+                <p>Understand cell structure, function, and division processes.</p>
+                
+                <div class="quiz-item">
+                    <h4>Powerhouse of the cell?</h4>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'Mitochondria')">Mitochondria</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'Nucleus')">Nucleus</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'Ribosome')">Ribosome</button>
+                </div>
 
-    <!-- Accordion for Lessons -->
-    <div class="accordion" id="englishLessons">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#literature" aria-expanded="true">
-            Literature
-          </button>
-        </h2>
-        <div id="literature" class="accordion-collapse collapse show">
-          <div class="accordion-body">
-            <p>Literature includes the study of novels, poetry, and plays. You’ll analyze themes, characters, and language.</p>
-            <ul>
-              <li>Explore Shakespeare's use of language in Macbeth</li>
-              <li>Understand poetic devices like metaphor and enjambment</li>
-            </ul>
-          </div>
+                <div class="quiz-item">
+                    <h4>Process of cell division?</h4>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'Mitosis')">Mitosis</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'Meiosis')">Meiosis</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'Photosynthesis')">Photosynthesis</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#language">
-            Language
-          </button>
-        </h2>
-        <div id="language" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            <p>English Language focuses on comprehension and writing skills.</p>
-            <ul>
-              <li>Analyzing non-fiction texts</li>
-              <li>Writing persuasive, narrative, and descriptive pieces</li>
-            </ul>
-          </div>
+
+        <!-- Chapter 2 -->
+        <div class="chapter-card">
+            <div class="chapter-header">
+                <img src="https://images.unsplash.com/photo-1575503802870-45de6a6217c8?auto=format&fit=crop&w=800" 
+                     alt="Genetics" 
+                     class="chapter-image">
+                <h2>Chapter 2: Genetic Inheritance</h2>
+            </div>
+            <div class="chapter-content">
+                <p>Study DNA structure, genes, and inheritance patterns.</p>
+                
+                <div class="quiz-item">
+                    <h4>Human chromosome pairs count?</h4>
+                    <button class="answer-btn" onclick="checkAnswer(this, '23')">23</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, '46')">46</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, '22')">22</button>
+                </div>
+
+                <div class="quiz-item">
+                    <h4>DNA base pair components?</h4>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'ATCG')">A-T, T-A, C-G, G-C</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'AUCG')">A-U, U-A, C-G, G-C</button>
+                    <button class="answer-btn" onclick="checkAnswer(this, 'ATUG')">A-T, T-U, U-G, G-C</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#grammar">
-            Grammar & Vocabulary
-          </button>
-        </h2>
-        <div id="grammar" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            <p>Grammar is essential for effective communication. Improve your accuracy in writing and comprehension.</p>
-            <ul>
-              <li>Subject-verb agreement</li>
-              <li>Using commas, semicolons, and colons correctly</li>
-              <li>Understanding connotations of vocabulary</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    </main>
 
-    <!-- Quiz Section -->
-    <div class="mt-5">
-      <h3>Quick Quiz</h3>
-      <p>Which of the following is a metaphor?</p>
-      <select id="quizAnswer" class="form-select w-50">
-        <option value="">Select an answer</option>
-        <option value="1">The wind was loud and strong</option>
-        <option value="2">The wind whispered through the trees</option>
-        <option value="3">The wind is a wild beast</option>
-      </select>
-      <button onclick="checkAnswer()" class="btn btn-primary mt-2">Submit</button>
-      <div id="feedback" class="quiz-feedback"></div>
-    </div>
-  </div>
+    <footer>
+        <p>&copy; 2025 INTELLECT. All rights reserved.</p>
+    </footer>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 WebDev Academy. All rights reserved.</p>
-  </footer>
+    <script>
+        function checkAnswer(button, correctAnswer) {
+            const userAnswer = button.textContent;
+            button.classList.add(userAnswer === correctAnswer ? 'correct' : 'incorrect');
+            
+            setTimeout(() => {
+                button.classList.remove('correct', 'incorrect');
+            }, 1500);
+        }
 
-  <!-- JavaScript -->
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    }
+        function updateTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            document.getElementById('themeToggle').textContent = isDark ? '🌞' : '🌓';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
 
-    function checkAnswer() {
-      const selected = document.getElementById('quizAnswer').value;
-      const feedback = document.getElementById('feedback');
-      if (selected === '3') {
-        feedback.textContent = '✅ Correct! That is a metaphor.';
-        feedback.style.color = 'green';
-      } else {
-        feedback.textContent = '❌ Incorrect. Try again!';
-        feedback.style.color = 'red';
-      }
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            updateTheme();
+        });
+
+        document.documentElement.setAttribute('data-theme', 
+            localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        );
+        updateTheme();
+    </script>
 </body>
 </html>
-
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-custom px-3">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">WebDev Academy</a>
-      <button class="btn-theme" onclick="toggleTheme()" title="Toggle light/dark mode">🌓</button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="math.html">Maths</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="english.html">English</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="biology.html">Biology</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="history.html">History</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="geography.html">Geography</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="feedback.html">Feedback</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <div class="hero">
-    <h1 class="display-4">Biology</h1>
-    <p class="lead">Explore the fascinating world of biology, from cells to ecosystems!</p>
-    <a href="#topics" class="btn btn-light btn-lg mt-3">Explore Topics</a>
-  </div>
-
-  <!-- Topics Section -->
-  <section class="container py-5" id="topics">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card p-4 h-100 text-center">
-          <h3>Cells and Microbiology</h3>
-          <p>Learn about the building blocks of life, cell structures, and functions.</p>
-          <a href="#question1" class="btn btn-outline-primary">Test Yourself</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-4 h-100 text-center">
-          <h3>Genetics</h3>
-          <p>Discover the principles of inheritance and DNA.</p>
-          <a href="#question2" class="btn btn-outline-primary">Test Yourself</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-4 h-100 text-center">
-          <h3>Ecology</h3>
-          <p>Understand ecosystems, food chains, and the impact of human activity.</p>
-          <a href="#question3" class="btn btn-outline-primary">Test Yourself</a>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4 h-100 text-center">
-          <h3>Human Anatomy</h3>
-          <p>Explore the human body, organs, and organ systems.</p>
-          <a href="#question4" class="btn btn-outline-primary">Test Yourself</a>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-4 h-100 text-center">
-          <h3>Plant Biology</h3>
-          <p>Dive into the world of plants, photosynthesis, and plant reproduction.</p>
-          <a href="#question5" class="btn btn-outline-primary">Test Yourself</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Questions Section -->
-  <section class="container py-5" id="questions">
-    <h2 class="text-center">Biology Quiz</h2>
-
-    <!-- Question 1: Cells and Microbiology -->
-    <div id="question1" class="card p-4 mt-4">
-      <h4>1. What is the function of mitochondria in a cell?</h4>
-      <form>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question1" value="A">
-          <label class="form-check-label">A) Energy production</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question1" value="B">
-          <label class="form-check-label">B) Protein synthesis</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question1" value="C">
-          <label class="form-check-label">C) DNA replication</label>
-        </div>
-        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
-      </form>
-    </div>
-
-    <!-- Question 2: Genetics -->
-    <div id="question2" class="card p-4 mt-4">
-      <h4>2. What is a gene?</h4>
-      <form>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question2" value="A">
-          <label class="form-check-label">A) A piece of DNA that codes for a specific protein</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question2" value="B">
-          <label class="form-check-label">B) A type of cell organelle</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question2" value="C">
-          <label class="form-check-label">C) A type of lipid</label>
-        </div>
-        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
-      </form>
-    </div>
-
-    <!-- Question 3: Ecology -->
-    <div id="question3" class="card p-4 mt-4">
-      <h4>3. Which of the following is an example of a producer in an ecosystem?</h4>
-      <form>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question3" value="A">
-          <label class="form-check-label">A) Rabbit</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question3" value="B">
-          <label class="form-check-label">B) Oak tree</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question3" value="C">
-          <label class="form-check-label">C) Fox</label>
-        </div>
-        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
-      </form>
-    </div>
-
-    <!-- Question 4: Human Anatomy -->
-    <div id="question4" class="card p-4 mt-4">
-      <h4>4. Which organ is responsible for pumping blood throughout the body?</h4>
-      <form>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question4" value="A">
-          <label class="form-check-label">A) Heart</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question4" value="B">
-          <label class="form-check-label">B) Lungs</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question4" value="C">
-          <label class="form-check-label">C) Liver</label>
-        </div>
-        <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
-      </form>
-    </div>
-
-    <!-- Question 5: Plant Biology -->
-    <div id="question5" class="card p-4 mt-4">
-      <h4>5. What process do plants use to make food?</h4>
-      <form>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="question5" value="A">
-          <label class="form-check-label">A) Photosynthesis</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="question5" value="B">
-      <label class="form-check-label">B) Respiration</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="question5" value="C">
-      <label class="form-check-label">C) Digestion</label>
-    </div>
-    <button type="submit" class="btn btn-outline-primary mt-2">Submit Answer</button>
-  </form>
-</div>
-</section> <!-- Footer --> <footer> <p>&copy; 2025 WebDev Academy. All rights reserved.</p> </footer> <!-- JavaScript --> <script> function toggleTheme() { const html = document.documentElement; const currentTheme = html.getAttribute('data-theme'); html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark'); } </script> </body> </html>
