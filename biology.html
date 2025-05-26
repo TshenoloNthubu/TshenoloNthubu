@@ -1,183 +1,515 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biology | INTELLECT</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-dark: #0A2463;
-            --primary: #1E3A8A;
-            --accent: #3B82F6;
-            --light-blue: #93C5FD;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-theme="dark"] {
-            --primary-dark: #1E40AF;
-            --primary: #2563EB;
-            --accent: #60A5FA;
-            --light-blue: #3B82F6;
-            --light: #1F2937;
-            --dark: #F9FAFB;
-        }
-
-        .chapter-card {
-            background: var(--light);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .chapter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
-        }
-
-        .quiz-item {
-            background: rgba(10, 36, 99, 0.05);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 10px;
-        }
-
-        .answer-btn {
-            background: var(--light-blue);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            margin: 0.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .answer-btn:hover {
-            background: var(--accent);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .correct { background: #4CAF50 !important; color: white; }
-        .incorrect { background: #f44336 !important; color: white; }
-    </style>
+    <meta name="description" content="Master Biology with INTELLECT - Expert tutoring for GCSE and A-Level Biology students">
+    <meta name="keywords" content="biology tutoring, GCSE biology, A-level biology, online tutoring, science education">
+    <title>Biology Tutoring | INTELLECT</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/subject-pages.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">INTELLECT</div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#subjects">Subjects</a>
-                <a href="index.html#contact">Contact</a>
-                <button class="auth-btn">Login</button>
-                <button class="auth-btn">Sign Up</button>
-                <button class="theme-toggle" id="themeToggle">🌓</button>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <i class="fas fa-brain brand-icon"></i>
+                    <span class="brand-text">INTELLECT</span>
+                </a>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="biology.html" class="dropdown-link active">Biology</a></li>
+                        <li><a href="chemistry.html" class="dropdown-link">Chemistry</a></li>
+                        <li><a href="computer-science.html" class="dropdown-link">Computer Science</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline" id="loginBtn">Login</button>
+                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>GCSE Biology</h1>
-            <div class="typing-animation">
-                Explore life processes from cellular to ecosystem levels
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="subject-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            Master <span class="highlight">Biology</span> with Expert Guidance
+                        </h1>
+                        <p class="hero-description">
+                            From cell structure to ecosystems, unlock the mysteries of life with our comprehensive Biology tutoring program. Achieve excellence in GCSE and A-Level Biology.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">A*-B Grades</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Students Taught</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">8+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary btn-large">Start Learning Biology</button>
+                            <button class="btn btn-outline btn-large">View Sample Lesson</button>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="biology-illustration">
+                            <i class="fas fa-dna"></i>
+                            <div class="floating-elements">
+                                <div class="element element-1"><i class="fas fa-microscope"></i></div>
+                                <div class="element element-2"><i class="fas fa-leaf"></i></div>
+                                <div class="element element-3"><i class="fas fa-heartbeat"></i></div>
+                                <div class="element element-4"><i class="fas fa-seedling"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <main class="container py-5">
-        <!-- Chapter 1 -->
-        <div class="chapter-card">
-            <div class="chapter-header">
-                <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800" 
-                     alt="Cell Biology" 
-                     class="chapter-image">
-                <h2>Chapter 1: Cellular Biology</h2>
-            </div>
-            <div class="chapter-content">
-                <p>Understand cell structure, function, and division processes.</p>
+        <!-- Curriculum Overview -->
+        <section class="curriculum-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Biology Curriculum</h2>
+                    <p class="section-description">Comprehensive coverage of all Biology topics</p>
+                </div>
                 
-                <div class="quiz-item">
-                    <h4>Powerhouse of the cell?</h4>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'Mitochondria')">Mitochondria</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'Nucleus')">Nucleus</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'Ribosome')">Ribosome</button>
-                </div>
-
-                <div class="quiz-item">
-                    <h4>Process of cell division?</h4>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'Mitosis')">Mitosis</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'Meiosis')">Meiosis</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'Photosynthesis')">Photosynthesis</button>
+                <div class="curriculum-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="gcse">GCSE Biology</button>
+                        <button class="tab-btn" data-tab="alevel">A-Level Biology</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="gcse">
+                            <div class="topics-grid">
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-microscope"></i>
+                                    </div>
+                                    <h3 class="topic-title">Cell Biology</h3>
+                                    <ul class="topic-list">
+                                        <li>Cell structure and function</li>
+                                        <li>Cell division (mitosis)</li>
+                                        <li>Stem cells</li>
+                                        <li>Microscopy techniques</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <h3 class="topic-title">Human Biology</h3>
+                                    <ul class="topic-list">
+                                        <li>Digestive system</li>
+                                        <li>Circulatory system</li>
+                                        <li>Respiratory system</li>
+                                        <li>Nervous system</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <h3 class="topic-title">Plant Biology</h3>
+                                    <ul class="topic-list">
+                                        <li>Photosynthesis</li>
+                                        <li>Plant structure</li>
+                                        <li>Transport in plants</li>
+                                        <li>Plant hormones</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-dna"></i>
+                                    </div>
+                                    <h3 class="topic-title">Genetics</h3>
+                                    <ul class="topic-list">
+                                        <li>DNA structure</li>
+                                        <li>Inheritance patterns</li>
+                                        <li>Genetic variation</li>
+                                        <li>Evolution</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <h3 class="topic-title">Ecology</h3>
+                                    <ul class="topic-list">
+                                        <li>Ecosystems</li>
+                                        <li>Food chains and webs</li>
+                                        <li>Environmental factors</li>
+                                        <li>Human impact</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-virus"></i>
+                                    </div>
+                                    <h3 class="topic-title">Disease & Immunity</h3>
+                                    <ul class="topic-list">
+                                        <li>Pathogens</li>
+                                        <li>Immune system</li>
+                                        <li>Vaccination</li>
+                                        <li>Antibiotics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="alevel">
+                            <div class="topics-grid">
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-atom"></i>
+                                    </div>
+                                    <h3 class="topic-title">Biochemistry</h3>
+                                    <ul class="topic-list">
+                                        <li>Biological molecules</li>
+                                        <li>Enzyme kinetics</li>
+                                        <li>Metabolic pathways</li>
+                                        <li>Protein structure</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-dna"></i>
+                                    </div>
+                                    <h3 class="topic-title">Molecular Biology</h3>
+                                    <ul class="topic-list">
+                                        <li>DNA replication</li>
+                                        <li>Protein synthesis</li>
+                                        <li>Gene expression</li>
+                                        <li>Genetic engineering</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h3 class="topic-title">Physiology</h3>
+                                    <ul class="topic-list">
+                                        <li>Homeostasis</li>
+                                        <li>Kidney function</li>
+                                        <li>Muscle contraction</li>
+                                        <li>Neural transmission</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <h3 class="topic-title">Plant Science</h3>
+                                    <ul class="topic-list">
+                                        <li>Photosynthesis mechanisms</li>
+                                        <li>Plant responses</li>
+                                        <li>Transport systems</li>
+                                        <li>Plant reproduction</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-tree"></i>
+                                    </div>
+                                    <h3 class="topic-title">Ecology & Evolution</h3>
+                                    <ul class="topic-list">
+                                        <li>Population dynamics</li>
+                                        <li>Natural selection</li>
+                                        <li>Speciation</li>
+                                        <li>Conservation biology</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="topic-card">
+                                    <div class="topic-icon">
+                                        <i class="fas fa-flask"></i>
+                                    </div>
+                                    <h3 class="topic-title">Practical Skills</h3>
+                                    <ul class="topic-list">
+                                        <li>Experimental design</li>
+                                        <li>Data analysis</li>
+                                        <li>Laboratory techniques</li>
+                                        <li>Scientific writing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Chapter 2 -->
-        <div class="chapter-card">
-            <div class="chapter-header">
-                <img src="https://images.unsplash.com/photo-1575503802870-45de6a6217c8?auto=format&fit=crop&w=800" 
-                     alt="Genetics" 
-                     class="chapter-image">
-                <h2>Chapter 2: Genetic Inheritance</h2>
+        <!-- Teaching Approach -->
+        <section class="approach-section">
+            <div class="container">
+                <div class="approach-content">
+                    <div class="approach-text">
+                        <h2 class="section-title">Our Biology Teaching Approach</h2>
+                        <div class="approach-features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Visual Learning</h3>
+                                    <p>Complex biological processes explained through interactive diagrams, animations, and real-world examples.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Practical Application</h3>
+                                    <p>Virtual lab experiments and practical skills development to enhance understanding and exam performance.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Exam Mastery</h3>
+                                    <p>Focused exam technique training with past papers, mark schemes, and examiner insights.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="approach-visual">
+                        <div class="biology-diagram">
+                            <div class="cell-structure">
+                                <div class="nucleus"></div>
+                                <div class="mitochondria"></div>
+                                <div class="ribosomes"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="chapter-content">
-                <p>Study DNA structure, genes, and inheritance patterns.</p>
+        </section>
+
+        <!-- Pricing -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Biology Tutoring Packages</h2>
+                    <p class="section-description">Choose the perfect plan for your Biology learning journey</p>
+                </div>
                 
-                <div class="quiz-item">
-                    <h4>Human chromosome pairs count?</h4>
-                    <button class="answer-btn" onclick="checkAnswer(this, '23')">23</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, '46')">46</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, '22')">22</button>
-                </div>
-
-                <div class="quiz-item">
-                    <h4>DNA base pair components?</h4>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'ATCG')">A-T, T-A, C-G, G-C</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'AUCG')">A-U, U-A, C-G, G-C</button>
-                    <button class="answer-btn" onclick="checkAnswer(this, 'ATUG')">A-T, T-U, U-G, G-C</button>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">GCSE Biology</h3>
+                            <div class="pricing-price">
+                                <span class="currency">£</span>
+                                <span class="amount">35</span>
+                                <span class="period">/hour</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> One-to-one tutoring</li>
+                            <li><i class="fas fa-check"></i> GCSE curriculum coverage</li>
+                            <li><i class="fas fa-check"></i> Exam preparation</li>
+                            <li><i class="fas fa-check"></i> Progress tracking</li>
+                            <li><i class="fas fa-check"></i> Study materials included</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full">Choose GCSE</button>
+                    </div>
+                    
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">A-Level Biology</h3>
+                            <div class="pricing-price">
+                                <span class="currency">£</span>
+                                <span class="amount">45</span>
+                                <span class="period">/hour</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Advanced one-to-one tutoring</li>
+                            <li><i class="fas fa-check"></i> Complete A-Level syllabus</li>
+                            <li><i class="fas fa-check"></i> University preparation</li>
+                            <li><i class="fas fa-check"></i> Practical skills training</li>
+                            <li><i class="fas fa-check"></i> Research project support</li>
+                        </ul>
+                        <button class="btn btn-primary btn-full">Choose A-Level</button>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Intensive Course</h3>
+                            <div class="pricing-price">
+                                <span class="currency">£</span>
+                                <span class="amount">400</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 12 hours per month</li>
+                            <li><i class="fas fa-check"></i> Rapid progress guarantee</li>
+                            <li><i class="fas fa-check"></i> Priority booking</li>
+                            <li><i class="fas fa-check"></i> 24/7 support</li>
+                            <li><i class="fas fa-check"></i> Free resources</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full">Choose Intensive</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Excel in Biology?</h2>
+                    <p class="cta-description">Join hundreds of students who have achieved top grades with our expert Biology tutoring</p>
+                    <div class="cta-actions">
+                        <button class="btn btn-primary btn-large">Book Free Trial Lesson</button>
+                        <button class="btn btn-outline btn-large">Download Biology Guide</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 INTELLECT. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-brain brand-icon"></i>
+                        <span class="brand-text">INTELLECT</span>
+                    </div>
+                    <p class="footer-description">Empowering students to achieve academic excellence through personalized tutoring and innovative learning methods.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Subjects</h3>
+                    <ul class="footer-links">
+                        <li><a href="biology.html">Biology</a></li>
+                        <li><a href="chemistry.html">Chemistry</a></li>
+                        <li><a href="computer-science.html">Computer Science</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="dashboard.html">Student Portal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@intellect-tutoring.com</p>
+                        <p><i class="fas fa-phone"></i> +44 20 1234 5678</p>
+                        <p><i class="fas fa-map-marker-alt"></i> London, UK</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTELLECT. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        function checkAnswer(button, correctAnswer) {
-            const userAnswer = button.textContent;
-            button.classList.add(userAnswer === correctAnswer ? 'correct' : 'incorrect');
+    <!-- Authentication Modal (same as main page) -->
+    <div id="authModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <span class="modal-close" onclick="hideAuthModal()">&times;</span>
+            <h2 id="modalTitle">Welcome Back</h2>
             
-            setTimeout(() => {
-                button.classList.remove('correct', 'incorrect');
-            }, 1500);
-        }
+            <form id="authForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+            </form>
+            
+            <div id="welcomeMessage" class="welcome-message" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <h3>Success!</h3>
+                <p class="typing-effect">Welcome to our interactive learning platform!</p>
+            </div>
+        </div>
+    </div>
 
-        function updateTheme() {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            document.getElementById('themeToggle').textContent = isDark ? '🌞' : '🌓';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        }
-
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            updateTheme();
-        });
-
-        document.documentElement.setAttribute('data-theme', 
-            localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-        );
-        updateTheme();
-    </script>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/subject-pages.js"></script>
 </body>
 </html>
