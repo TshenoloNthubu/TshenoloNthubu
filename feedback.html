@@ -1,508 +1,744 @@
 <!DOCTYPE html>
-<nav class="navbar navbar-expand-lg px-4">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="index.html">WebDev Academy</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="math.html">Mathematics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="english.html">English</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="biology.html">Biology</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="history.html">History</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="geography.html">Geography</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="feedback.html">Feedback</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<html lang="en" data-theme="light">
-<!DOCTYPE html>
-<nav class="navbar navbar-expand-lg px-4">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="index.html">WebDev Academy</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="math.html">Mathematics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="english.html">English</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="biology.html">Biology</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="history.html">History</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="geography.html">Geography</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="feedback.html">Feedback</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTELLECT | Premium GCSE Tutoring</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* ---------- Global Styles ---------- */
-        :root {
-            --primary-dark: #0A2463;
-            --primary: #1E3A8A;
-            --accent: #3B82F6;
-            --light-blue: #93C5FD;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-theme="dark"] {
-            --primary-dark: #1E40AF;
-            --primary: #2563EB;
-            --accent: #60A5FA;
-            --light-blue: #3B82F6;
-            --light: #1F2937;
-            --dark: #F9FAFB;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--light);
-            color: var(--dark);
-            transition: var(--transition);
-        }
-
-        /* ---------- Animations ---------- */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--accent); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* ---------- Header & Navigation ---------- */
-        header {
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background: var(--light);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-dark), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        /* ---------- Auth Buttons ---------- */
-        .auth-btn {
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid;
-            cursor: pointer;
-        }
-
-        #loginBtn {
-            background: var(--primary-dark);
-            color: white !important;
-            border-color: var(--primary-dark);
-        }
-
-        #signupHeaderBtn {
-            background: white;
-            color: var(--primary-dark) !important;
-            border-color: white;
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-        }
-
-        .typing-animation {
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 20px auto;
-            letter-spacing: 2px;
-            border-right: 2px solid var(--accent);
-            animation: 
-                typing 3.5s steps(40, end),
-                blink-caret 0.75s step-end infinite;
-        }
-
-        /* ---------- About Section ---------- */
-        .about-section {
-            padding: 5rem 2rem;
-            background: rgba(10, 36, 99, 0.05);
-        }
-
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        /* ---------- Subject Cards ---------- */
-        .subject-grid {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .subject-card {
-            background: var(--light);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .subject-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        /* ---------- Contact Section ---------- */
-        .contact-info {
-            background: rgba(10, 36, 99, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem auto;
-            max-width: 1200px;
-        }
-
-        /* ---------- Auth Modal ---------- */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-        }
-
-        .modal-content {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 15px;
-            max-width: 400px;
-            margin: 5% auto;
-            position: relative;
-        }
-
-        .welcome-message {
-            display: none;
-            padding: 20px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .typing-effect {
-            overflow: hidden;
-            border-right: 2px solid var(--accent);
-            white-space: nowrap;
-            animation: 
-                typing 2s steps(40, end),
-                blink-caret 0.75s step-end;
-        }
-
-        /* ---------- Footer ---------- */
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        /* ---------- Responsive Design ---------- */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: flex-end;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <meta name="description" content="Provide feedback on your INTELLECT tutoring experience">
+    <meta name="keywords" content="feedback, tutoring feedback, student reviews, INTELLECT">
+    <title>Feedback | INTELLECT</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/feedback.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">INTELLECT</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#subjects">Subjects</a>
-                <a href="#contact">Contact</a>
-                <button id="loginBtn" class="auth-btn">Login</button>
-                <button id="signupHeaderBtn" class="auth-btn">Sign Up</button>
-                <button class="theme-toggle" id="themeToggle">🌓</button>
+    <header class="header">
+        <nav class="nav container" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <i class="fas fa-brain brand-icon"></i>
+                    <span class="brand-text">INTELLECT</span>
+                </a>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="biology.html" class="dropdown-link">Biology</a></li>
+                        <li><a href="chemistry.html" class="dropdown-link">Chemistry</a></li>
+                        <li><a href="computer-science.html" class="dropdown-link">Computer Science</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Premium GCSE Tutoring</h1>
-            <div class="typing-animation">
-                A one-on-one tutorial session to help you excel in your studies
+    <!-- Main Content -->
+    <main id="main-content" class="feedback-main">
+        <!-- Hero Section -->
+        <section class="feedback-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Your Feedback Matters</h1>
+                    <p class="hero-description">
+                        Help us improve your learning experience. Share your thoughts about lessons, tutors, and our platform.
+                    </p>
+                    <div class="feedback-stats">
+                        <div class="stat">
+                            <span class="stat-number">4.9</span>
+                            <span class="stat-label">Average Rating</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1,200+</span>
+                            <span class="stat-label">Reviews</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Types -->
+        <section class="feedback-types">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Choose Feedback Type</h2>
+                    <p class="section-description">Select the type of feedback you'd like to provide</p>
+                </div>
+                
+                <div class="feedback-type-grid">
+                    <div class="feedback-type-card" data-type="lesson">
+                        <div class="type-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 class="type-title">Lesson Feedback</h3>
+                        <p class="type-description">Rate and review your recent tutoring session</p>
+                        <button class="btn btn-outline">Provide Lesson Feedback</button>
+                    </div>
+                    
+                    <div class="feedback-type-card" data-type="tutor">
+                        <div class="type-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 class="type-title">Tutor Feedback</h3>
+                        <p class="type-description">Share your experience with your tutor</p>
+                        <button class="btn btn-outline">Rate Your Tutor</button>
+                    </div>
+                    
+                    <div class="feedback-type-card" data-type="platform">
+                        <div class="type-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3 class="type-title">Platform Feedback</h3>
+                        <p class="type-description">Help us improve our website and tools</p>
+                        <button class="btn btn-outline">Platform Feedback</button>
+                    </div>
+                    
+                    <div class="feedback-type-card" data-type="general">
+                        <div class="type-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="type-title">General Feedback</h3>
+                        <p class="type-description">Share any other thoughts or suggestions</p>
+                        <button class="btn btn-outline">General Feedback</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Form Container -->
+        <section class="feedback-form-section" id="feedbackFormSection" style="display: none;">
+            <div class="container">
+                <div class="feedback-form-container">
+                    <div class="form-header">
+                        <button class="back-btn" id="backBtn">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Types
+                        </button>
+                        <h2 class="form-title" id="formTitle">Lesson Feedback</h2>
+                        <p class="form-subtitle" id="formSubtitle">Please rate your recent lesson experience</p>
+                    </div>
+                    
+                    <!-- Lesson Feedback Form -->
+                    <form class="feedback-form" id="lessonFeedbackForm" style="display: none;">
+                        <div class="lesson-selection">
+                            <h3 class="section-title">Select Lesson</h3>
+                            <div class="lesson-list">
+                                <div class="lesson-item" data-lesson-id="1">
+                                    <div class="lesson-info">
+                                        <h4 class="lesson-title">Biology - Cell Division</h4>
+                                        <p class="lesson-details">with Dr. Sarah Wilson • Yesterday, 2:00 PM</p>
+                                    </div>
+                                    <div class="lesson-status">
+                                        <span class="status-badge completed">Completed</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="lesson-item" data-lesson-id="2">
+                                    <div class="lesson-info">
+                                        <h4 class="lesson-title">Chemistry - Organic Reactions</h4>
+                                        <p class="lesson-details">with Prof. Michael Chen • 2 days ago, 4:30 PM</p>
+                                    </div>
+                                    <div class="lesson-status">
+                                        <span class="status-badge completed">Completed</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="lesson-item" data-lesson-id="3">
+                                    <div class="lesson-info">
+                                        <h4 class="lesson-title">Computer Science - Algorithms</h4>
+                                        <p class="lesson-details">with Dr. James Rodriguez • 3 days ago, 10:00 AM</p>
+                                    </div>
+                                    <div class="lesson-status">
+                                        <span class="status-badge completed">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rating-section">
+                            <h3 class="section-title">Overall Rating</h3>
+                            <div class="star-rating" data-rating="0">
+                                <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                            </div>
+                            <p class="rating-text" id="ratingText">Click to rate</p>
+                        </div>
+                        
+                        <div class="detailed-ratings">
+                            <h3 class="section-title">Detailed Ratings</h3>
+                            <div class="rating-categories">
+                                <div class="rating-category">
+                                    <label class="category-label">Content Quality</label>
+                                    <div class="star-rating small" data-category="content">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="rating-category">
+                                    <label class="category-label">Teaching Style</label>
+                                    <div class="star-rating small" data-category="teaching">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="rating-category">
+                                    <label class="category-label">Clarity of Explanation</label>
+                                    <div class="star-rating small" data-category="clarity">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="rating-category">
+                                    <label class="category-label">Engagement Level</label>
+                                    <div class="star-rating small" data-category="engagement">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feedback-questions">
+                            <h3 class="section-title">Quick Questions</h3>
+                            <div class="question-group">
+                                <label class="question-label">Did the lesson meet your expectations?</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="expectations" value="exceeded">
+                                        <span class="radio-text">Exceeded expectations</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="expectations" value="met">
+                                        <span class="radio-text">Met expectations</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="expectations" value="below">
+                                        <span class="radio-text">Below expectations</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="question-group">
+                                <label class="question-label">Would you recommend this tutor to others?</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="recommend" value="definitely">
+                                        <span class="radio-text">Definitely</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="recommend" value="probably">
+                                        <span class="radio-text">Probably</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="recommend" value="maybe">
+                                        <span class="radio-text">Maybe</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="recommend" value="no">
+                                        <span class="radio-text">No</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="written-feedback">
+                            <h3 class="section-title">Written Feedback</h3>
+                            <div class="form-group">
+                                <label for="positives" class="form-label">What did you like most about this lesson?</label>
+                                <textarea id="positives" name="positives" class="form-textarea" rows="3" placeholder="Share what worked well..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="improvements" class="form-label">What could be improved?</label>
+                                <textarea id="improvements" name="improvements" class="form-textarea" rows="3" placeholder="Share suggestions for improvement..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="additional" class="form-label">Additional Comments (Optional)</label>
+                                <textarea id="additional" name="additional" class="form-textarea" rows="3" placeholder="Any other feedback..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Submit Feedback</button>
+                            <button type="button" class="btn btn-outline btn-large" id="saveDraftBtn">Save as Draft</button>
+                        </div>
+                    </form>
+                    
+                    <!-- Tutor Feedback Form -->
+                    <form class="feedback-form" id="tutorFeedbackForm" style="display: none;">
+                        <div class="tutor-selection">
+                            <h3 class="section-title">Select Tutor</h3>
+                            <div class="tutor-grid">
+                                <div class="tutor-card" data-tutor-id="1">
+                                    <div class="tutor-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="tutor-info">
+                                        <h4 class="tutor-name">Dr. Sarah Wilson</h4>
+                                        <p class="tutor-subject">Biology Specialist</p>
+                                        <p class="tutor-stats">15 lessons • 4.9 rating</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tutor-card" data-tutor-id="2">
+                                    <div class="tutor-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="tutor-info">
+                                        <h4 class="tutor-name">Prof. Michael Chen</h4>
+                                        <p class="tutor-subject">Chemistry Expert</p>
+                                        <p class="tutor-stats">12 lessons • 4.8 rating</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tutor-card" data-tutor-id="3">
+                                    <div class="tutor-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="tutor-info">
+                                        <h4 class="tutor-name">Dr. James Rodriguez</h4>
+                                        <p class="tutor-subject">Computer Science</p>
+                                        <p class="tutor-stats">8 lessons • 5.0 rating</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-rating-section">
+                            <h3 class="section-title">Rate Your Tutor</h3>
+                            <div class="tutor-rating-categories">
+                                <div class="rating-category">
+                                    <label class="category-label">Knowledge & Expertise</label>
+                                    <div class="star-rating" data-category="knowledge">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="rating-category">
+                                    <label class="category-label">Communication Skills</label>
+                                    <div class="star-rating" data-category="communication">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="rating-category">
+                                    <label class="category-label">Patience & Support</label>
+                                    <div class="star-rating" data-category="patience">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="rating-category">
+                                    <label class="category-label">Punctuality</label>
+                                    <div class="star-rating" data-category="punctuality">
+                                        <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                        <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-feedback-text">
+                            <h3 class="section-title">Written Review</h3>
+                            <div class="form-group">
+                                <label for="tutorReview" class="form-label">Share your experience with this tutor</label>
+                                <textarea id="tutorReview" name="tutorReview" class="form-textarea" rows="5" placeholder="Describe your experience, what you learned, and how the tutor helped you..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="publicReview">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Allow this review to be displayed publicly (your name will be kept anonymous)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Submit Review</button>
+                        </div>
+                    </form>
+                    
+                    <!-- Platform Feedback Form -->
+                    <form class="feedback-form" id="platformFeedbackForm" style="display: none;">
+                        <div class="platform-areas">
+                            <h3 class="section-title">Which area would you like to provide feedback on?</h3>
+                            <div class="area-grid">
+                                <label class="area-option">
+                                    <input type="checkbox" name="areas" value="website">
+                                    <div class="area-content">
+                                        <i class="fas fa-globe"></i>
+                                        <span>Website Design</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="area-option">
+                                    <input type="checkbox" name="areas" value="booking">
+                                    <div class="area-content">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Booking System</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="area-option">
+                                    <input type="checkbox" name="areas" value="dashboard">
+                                    <div class="area-content">
+                                        <i class="fas fa-chart-pie"></i>
+                                        <span>Student Dashboard</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="area-option">
+                                    <input type="checkbox" name="areas" value="video">
+                                    <div class="area-content">
+                                        <i class="fas fa-video"></i>
+                                        <span>Video Platform</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="area-option">
+                                    <input type="checkbox" name="areas" value="mobile">
+                                    <div class="area-content">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>Mobile Experience</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="area-option">
+                                    <input type="checkbox" name="areas" value="payment">
+                                    <div class="area-content">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Payment Process</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="platform-rating">
+                            <h3 class="section-title">Overall Platform Rating</h3>
+                            <div class="star-rating large" data-rating="0">
+                                <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                                <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="platform-feedback-text">
+                            <div class="form-group">
+                                <label for="platformPositives" class="form-label">What do you like about our platform?</label>
+                                <textarea id="platformPositives" name="platformPositives" class="form-textarea" rows="3" placeholder="Tell us what's working well..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="platformImprovements" class="form-label">What could we improve?</label>
+                                <textarea id="platformImprovements" name="platformImprovements" class="form-textarea" rows="3" placeholder="Share your suggestions for improvement..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="platformFeatures" class="form-label">What new features would you like to see?</label>
+                                <textarea id="platformFeatures" name="platformFeatures" class="form-textarea" rows="3" placeholder="Describe any features you'd like us to add..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Submit Feedback</button>
+                        </div>
+                    </form>
+                    
+                    <!-- General Feedback Form -->
+                    <form class="feedback-form" id="generalFeedbackForm" style="display: none;">
+                        <div class="general-feedback-content">
+                            <h3 class="section-title">Share Your Thoughts</h3>
+                            
+                            <div class="feedback-category">
+                                <label for="feedbackType" class="form-label">Feedback Category</label>
+                                <select id="feedbackType" name="feedbackType" class="form-select">
+                                    <option value="">Select category</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="compliment">Compliment</option>
+                                    <option value="bug-report">Bug Report</option>
+                                    <option value="feature-request">Feature Request</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="feedbackSubject" class="form-label">Subject</label>
+                                <input type="text" id="feedbackSubject" name="feedbackSubject" class="form-input" placeholder="Brief description of your feedback">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="feedbackMessage" class="form-label">Your Message</label>
+                                <textarea id="feedbackMessage" name="feedbackMessage" class="form-textarea" rows="6" placeholder="Please provide detailed feedback..." required></textarea>
+                            </div>
+                            
+                            <div class="priority-level">
+                                <label class="form-label">Priority Level</label>
+                                <div class="priority-options">
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="low">
+                                        <span class="priority-indicator low"></span>
+                                        <span class="priority-text">Low</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="medium" checked>
+                                        <span class="priority-indicator medium"></span>
+                                        <span class="priority-text">Medium</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="high">
+                                        <span class="priority-indicator high"></span>
+                                        <span class="priority-text">High</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-preference">
+                                <label class="form-label">Would you like us to follow up with you?</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="followUp" value="yes">
+                                        <span class="radio-text">Yes, please contact me</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="followUp" value="no" checked>
+                                        <span class="radio-text">No follow-up needed</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Feedback -->
+        <section class="recent-feedback">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Your Recent Feedback</h2>
+                    <p class="section-description">Track your submitted feedback and responses</p>
+                </div>
+                
+                <div class="feedback-history">
+                    <div class="feedback-item">
+                        <div class="feedback-header">
+                            <div class="feedback-type-badge lesson">Lesson Feedback</div>
+                            <div class="feedback-date">2 days ago</div>
+                        </div>
+                        <div class="feedback-content">
+                            <h4 class="feedback-title">Biology - Cell Division</h4>
+                            <div class="feedback-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                            <p class="feedback-excerpt">Excellent lesson! Dr. Wilson explained complex concepts very clearly...</p>
+                        </div>
+                        <div class="feedback-status">
+                            <span class="status-badge reviewed">Reviewed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feedback-item">
+                        <div class="feedback-header">
+                            <div class="feedback-type-badge platform">Platform Feedback</div>
+                            <div class="feedback-date">1 week ago</div>
+                        </div>
+                        <div class="feedback-content">
+                            <h4 class="feedback-title">Dashboard Improvement Suggestion</h4>
+                            <p class="feedback-excerpt">Would love to see more detailed progress tracking features...</p>
+                        </div>
+                        <div class="feedback-status">
+                            <span class="status-badge pending">Under Review</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feedback-item">
+                        <div class="feedback-header">
+                            <div class="feedback-type-badge tutor">Tutor Review</div>
+                            <div class="feedback-date">2 weeks ago</div>
+                        </div>
+                        <div class="feedback-content">
+                            <h4 class="feedback-title">Prof. Michael Chen</h4>
+                            <div class="feedback-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">4.0</span>
+                            </div>
+                            <p class="feedback-excerpt">Great chemistry tutor with deep knowledge of organic reactions...</p>
+                        </div>
+                        <div class="feedback-status">
+                            <span class="status-badge published">Published</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feedback-actions">
+                    <button class="btn btn-outline">View All Feedback</button>
+                    <button class="btn btn-primary">Provide New Feedback</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-brain brand-icon"></i>
+                        <span class="brand-text">INTELLECT</span>
+                    </div>
+                    <p class="footer-description">Empowering students to achieve academic excellence through personalized tutoring and innovative learning methods.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Subjects</h3>
+                    <ul class="footer-links">
+                        <li><a href="biology.html">Biology</a></li>
+                        <li><a href="chemistry.html">Chemistry</a></li>
+                        <li><a href="computer-science.html">Computer Science</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="dashboard.html">Student Portal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@intellect-tutoring.com</p>
+                        <p><i class="fas fa-phone"></i> +44 20 1234 5678</p>
+                        <p><i class="fas fa-map-marker-alt"></i> London, UK</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 INTELLECT. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
         </div>
-    </section>
+    </footer>
 
-  <div class="container py-5">
-    <h1 class="mb-4">English GCSE Tutorial</h1>
-
-    <!-- Accordion for Lessons -->
-    <div class="accordion" id="englishLessons">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#literature" aria-expanded="true">
-            Literature
-          </button>
-        </h2>
-        <div id="literature" class="accordion-collapse collapse show">
-          <div class="accordion-body">
-            <p>Literature includes the study of novels, poetry, and plays. You’ll analyze themes, characters, and language.</p>
-            <ul>
-              <li>Explore Shakespeare's use of language in Macbeth</li>
-              <li>Understand poetic devices like metaphor and enjambment</li>
-            </ul>
-          </div>
+    <!-- Success Modal -->
+    <div id="feedbackSuccessModal" class="modal" aria-hidden="true" role="dialog">
+        <div class="modal-content">
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="success-title">Feedback Submitted!</h2>
+                <p class="success-message">
+                    Thank you for your valuable feedback. We appreciate you taking the time to help us improve.
+                </p>
+                <div class="success-actions">
+                    <button class="btn btn-primary" onclick="closeFeedbackModal()">Continue</button>
+                    <button class="btn btn-outline" onclick="submitAnotherFeedback()">Submit Another</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#language">
-            Language
-          </button>
-        </h2>
-        <div id="language" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            <p>English Language focuses on comprehension and writing skills.</p>
-            <ul>
-              <li>Analyzing non-fiction texts</li>
-              <li>Writing persuasive, narrative, and descriptive pieces</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#grammar">
-            Grammar & Vocabulary
-          </button>
-        </h2>
-        <div id="grammar" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            <p>Grammar is essential for effective communication. Improve your accuracy in writing and comprehension.</p>
-            <ul>
-              <li>Subject-verb agreement</li>
-              <li>Using commas, semicolons, and colons correctly</li>
-              <li>Understanding connotations of vocabulary</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Quiz Section -->
-    <div class="mt-5">
-      <h3>Quick Quiz</h3>
-      <p>Which of the following is a metaphor?</p>
-      <select id="quizAnswer" class="form-select w-50">
-        <option value="">Select an answer</option>
-        <option value="1">The wind was loud and strong</option>
-        <option value="2">The wind whispered through the trees</option>
-        <option value="3">The wind is a wild beast</option>
-      </select>
-      <button onclick="checkAnswer()" class="btn btn-primary mt-2">Submit</button>
-      <div id="feedback" class="quiz-feedback"></div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 WebDev Academy. All rights reserved.</p>
-  </footer>
-
-  <!-- JavaScript -->
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    }
-
-    function checkAnswer() {
-      const selected = document.getElementById('quizAnswer').value;
-      const feedback = document.getElementById('feedback');
-      if (selected === '3') {
-        feedback.textContent = '✅ Correct! That is a metaphor.';
-        feedback.style.color = 'green';
-      } else {
-        feedback.textContent = '❌ Incorrect. Try again!';
-        feedback.style.color = 'red';
-      }
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg px-4">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="index.html">WebDev Academy</a>
-      <button class="btn-theme" onclick="toggleTheme()">🌓</button>
-    </div>
-  </nav>
-
-  <div class="container py-5">
-    <h1 class="mb-4">We Value Your Feedback</h1>
-    <form onsubmit="handleSubmit(event)" class="row g-3">
-      <div class="col-md-6">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" required>
-      </div>
-      <div class="col-md-6">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
-      <div class="col-12">
-        <label for="subject" class="form-label">Subject</label>
-        <select id="subject" class="form-select" required>
-          <option value="">Choose...</option>
-          <option>Mathematics</option>
-          <option>English</option>
-          <option>Biology</option>
-          <option>History</option>
-          <option>Geography</option>
-        </select>
-      </div>
-      <div class="col-12">
-        <label for="message" class="form-label">Feedback</label>
-        <textarea id="message" class="form-control" rows="4" required></textarea>
-      </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <p class="thank-you mt-3" id="thankYouMessage">✅ Thank you for your feedback!</p>
-      </div>
-    </form>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 WebDev Academy. All rights reserved.</p>
-  </footer>
-
-  <!-- JavaScript -->
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    }
-
-    function handleSubmit(event) {
-      event.preventDefault();
-      document.getElementById('thankYouMessage').style.display = 'block';
-      event.target.reset();
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/feedback.js"></script>
 </body>
 </html>
