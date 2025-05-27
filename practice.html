@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Questions - INTELLECT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e40af;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background: #1e40af;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .btn-signup {
+            background: #60a5fa;
+            color: white;
+        }
+
+        .btn-signup:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-selector {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .subject-btn {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            color: #0369a1;
+            border: 2px solid #0ea5e9;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .subject-btn:hover {
+            background: linear-gradient(135deg, #0ea5e9, #0369a1);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .subject-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .question-card {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.1);
+        }
+
+        .question-number {
+            background: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e40af;
+        }
+
+        .options {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .option {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: #3b82f6;
+            background: #f0f9ff;
+        }
+
+        .option.selected {
+            border-color: #3b82f6;
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: #10b981;
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .results {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #1e40af;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .subject-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">INTELLECT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="subjects.html">Subjects</a></li>
+                <li><a href="practice.html">Practice</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="register.html" class="btn btn-signup">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Practice Questions</h1>
+                <p>Test your knowledge with our interactive practice questions</p>
+            </div>
+
+            <div class="subject-selector">
+                <h2 style="color: #1e40af; margin-bottom: 1.5rem; text-align: center;">Choose a Subject</h2>
+                <div class="subject-buttons">
+                    <button class="subject-btn" onclick="showQuiz('physics')">⚛️ Physics</button>
+                    <button class="subject-btn" onclick="showQuiz('chemistry')">🧪 Chemistry</button>
+                    <button class="subject-btn" onclick="showQuiz('biology')">🧬 Biology</button>
+                    <button class="subject-btn" onclick="showQuiz('mathematics')">📊 Mathematics</button>
+                    <button class="subject-btn" onclick="showQuiz('english')">📚 English</button>
+                    <button class="subject-btn" onclick="showQuiz('computer-science')">💻 Computer Science</button>
+                </div>
+            </div>
+
+            <!-- Physics Quiz -->
+            <div id="physics-quiz" class="quiz-container">
+                <h2 style="color: #1e40af; margin-bottom: 2rem;">⚛️ Physics Practice Questions</h2>
+                
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-text">What is the SI unit of force?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Joule</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Newton</div>
+                        <div class="option" onclick="selectOption(this)">C) Watt</div>
+                        <div class="option" onclick="selectOption(this)">D) Pascal</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-text">What is the speed of light in vacuum?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 3 × 10⁶ m/s</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 3 × 10⁸ m/s</div>
+                        <div class="option" onclick="selectOption(this)">C) 3 × 10¹⁰ m/s</div>
+                        <div class="option" onclick="selectOption(this)">D) 3 × 10¹² m/s</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-text">Which law states that energy cannot be created or destroyed?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Newton's First Law</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Law of Conservation of Energy</div>
+                        <div class="option" onclick="selectOption(this)">C) Ohm's Law</div>
+                        <div class="option" onclick="selectOption(this)">D) Hooke's Law</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-text">What is the acceleration due to gravity on Earth?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 8.8 m/s²</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 9.8 m/s²</div>
+                        <div class="option" onclick="selectOption(this)">C) 10.8 m/s²</div>
+                        <div class="option" onclick="selectOption(this)">D) 11.8 m/s²</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-text">What type of wave is sound?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Electromagnetic wave</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Longitudinal wave</div>
+                        <div class="option" onclick="selectOption(this)">C) Transverse wave</div>
+                        <div class="option" onclick="selectOption(this)">D) Standing wave</div>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz('physics')">Submit Quiz</button>
+                <div id="physics-results" class="results"></div>
+            </div>
+
+            <!-- Chemistry Quiz -->
+            <div id="chemistry-quiz" class="quiz-container">
+                <h2 style="color: #1e40af; margin-bottom: 2rem;">🧪 Chemistry Practice Questions</h2>
+                
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-text">What is the chemical symbol for gold?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Go</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Au</div>
+                        <div class="option" onclick="selectOption(this)">C) Ag</div>
+                        <div class="option" onclick="selectOption(this)">D) Gd</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-text">What is the pH of pure water?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 6</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 7</div>
+                        <div class="option" onclick="selectOption(this)">C) 8</div>
+                        <div class="option" onclick="selectOption(this)">D) 9</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-text">Which gas makes up the largest portion of Earth's atmosphere?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Oxygen</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Nitrogen</div>
+                        <div class="option" onclick="selectOption(this)">C) Carbon dioxide</div>
+                        <div class="option" onclick="selectOption(this)">D) Argon</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-text">What is the atomic number of carbon?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 5</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 6</div>
+                        <div class="option" onclick="selectOption(this)">C) 7</div>
+                        <div class="option" onclick="selectOption(this)">D) 8</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-text">What type of bond forms between metals and non-metals?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Covalent bond</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Ionic bond</div>
+                        <div class="option" onclick="selectOption(this)">C) Metallic bond</div>
+                        <div class="option" onclick="selectOption(this)">D) Hydrogen bond</div>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz('chemistry')">Submit Quiz</button>
+                <div id="chemistry-results" class="results"></div>
+            </div>
+
+            <!-- Biology Quiz -->
+            <div id="biology-quiz" class="quiz-container">
+                <h2 style="color: #1e40af; margin-bottom: 2rem;">🧬 Biology Practice Questions</h2>
+                
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-text">What is the powerhouse of the cell?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Nucleus</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Mitochondria</div>
+                        <div class="option" onclick="selectOption(this)">C) Ribosome</div>
+                        <div class="option" onclick="selectOption(this)">D) Endoplasmic reticulum</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-text">What is the process by which plants make their own food?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Respiration</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Photosynthesis</div>
+                        <div class="option" onclick="selectOption(this)">C) Transpiration</div>
+                        <div class="option" onclick="selectOption(this)">D) Digestion</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-text">How many chambers does a human heart have?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 2</div>
+                        <div class="option" onclick="selectOption(this)">B) 3</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">C) 4</div>
+                        <div class="option" onclick="selectOption(this)">D) 5</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-text">What is DNA an abbreviation for?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)" data-correct="true">A) Deoxyribonucleic acid</div>
+                        <div class="option" onclick="selectOption(this)">B) Deoxyribose nucleic acid</div>
+                        <div class="option" onclick="selectOption(this)">C) Diribonucleic acid</div>
+                        <div class="option" onclick="selectOption(this)">D) Deoxyribonuclease acid</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-text">Which blood type is known as the universal donor?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) A</div>
+                        <div class="option" onclick="selectOption(this)">B) B</div>
+                        <div class="option" onclick="selectOption(this)">C) AB</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">D) O</div>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz('biology')">Submit Quiz</button>
+                <div id="biology-results" class="results"></div>
+            </div>
+
+            <!-- Mathematics Quiz -->
+            <div id="mathematics-quiz" class="quiz-container">
+                <h2 style="color: #1e40af; margin-bottom: 2rem;">📊 Mathematics Practice Questions</h2>
+                
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-text">What is the value of π (pi) to two decimal places?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 3.12</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 3.14</div>
+                        <div class="option" onclick="selectOption(this)">C) 3.16</div>
+                        <div class="option" onclick="selectOption(this)">D) 3.18</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-text">What is the square root of 144?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 11</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 12</div>
+                        <div class="option" onclick="selectOption(this)">C) 13</div>
+                        <div class="option" onclick="selectOption(this)">D) 14</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-text">What is 15% of 200?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 25</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 30</div>
+                        <div class="option" onclick="selectOption(this)">C) 35</div>
+                        <div class="option" onclick="selectOption(this)">D) 40</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-text">What is the formula for the area of a circle?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 2πr</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) πr²</div>
+                        <div class="option" onclick="selectOption(this)">C) πd</div>
+                        <div class="option" onclick="selectOption(this)">D) 2πr²</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-text">If x + 5 = 12, what is the value of x?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 6</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 7</div>
+                        <div class="option" onclick="selectOption(this)">C) 8</div>
+                        <div class="option" onclick="selectOption(this)">D) 9</div>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz('mathematics')">Submit Quiz</button>
+                <div id="mathematics-results" class="results"></div>
+            </div>
+
+            <!-- English Quiz -->
+            <div id="english-quiz" class="quiz-container">
+                <h2 style="color: #1e40af; margin-bottom: 2rem;">📚 English Practice Questions</h2>
+                
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-text">Which of the following is a synonym for "happy"?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Sad</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Joyful</div>
+                        <div class="option" onclick="selectOption(this)">C) Angry</div>
+                        <div class="option" onclick="selectOption(this)">D) Tired</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-text">What is the past tense of "run"?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Runned</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Ran</div>
+                        <div class="option" onclick="selectOption(this)">C) Running</div>
+                        <div class="option" onclick="selectOption(this)">D) Runs</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-text">Which sentence is grammatically correct?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Me and John went to the store</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) John and I went to the store</div>
+                        <div class="option" onclick="selectOption(this)">C) John and me went to the store</div>
+                        <div class="option" onclick="selectOption(this)">D) I and John went to the store</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-text">What is a metaphor?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) A comparison using "like" or "as"</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) A direct comparison without using "like" or "as"</div>
+                        <div class="option" onclick="selectOption(this)">C) A question that doesn't need an answer</div>
+                        <div class="option" onclick="selectOption(this)">D) An exaggeration for effect</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-text">Who wrote "Romeo and Juliet"?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Charles Dickens</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) William Shakespeare</div>
+                        <div class="option" onclick="selectOption(this)">C) Jane Austen</div>
+                        <div class="option" onclick="selectOption(this)">D) Mark Twain</div>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz('english')">Submit Quiz</button>
+                <div id="english-results" class="results"></div>
+            </div>
+
+            <!-- Computer Science Quiz -->
+            <div id="computer-science-quiz" class="quiz-container">
+                <h2 style="color: #1e40af; margin-bottom: 2rem;">💻 Computer Science Practice Questions</h2>
+                
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-text">What does HTML stand for?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) High Tech Modern Language</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) HyperText Markup Language</div>
+                        <div class="option" onclick="selectOption(this)">C) Home Tool Markup Language</div>
+                        <div class="option" onclick="selectOption(this)">D) Hyperlink and Text Markup Language</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-text">Which of the following is a programming language?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) HTTP</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Python</div>
+                        <div class="option" onclick="selectOption(this)">C) HTML</div>
+                        <div class="option" onclick="selectOption(this)">D) CSS</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-text">What is the binary representation of the decimal number 5?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) 100</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) 101</div>
+                        <div class="option" onclick="selectOption(this)">C) 110</div>
+                        <div class="option" onclick="selectOption(this)">D) 111</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-text">What does CPU stand for?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Computer Personal Unit</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Central Processing Unit</div>
+                        <div class="option" onclick="selectOption(this)">C) Central Program Unit</div>
+                        <div class="option" onclick="selectOption(this)">D) Computer Processing Unit</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-text">Which data structure follows the Last In, First Out (LIFO) principle?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this)">A) Queue</div>
+                        <div class="option" onclick="selectOption(this)" data-correct="true">B) Stack</div>
+                        <div class="option" onclick="selectOption(this)">C) Array</div>
+                        <div class="option" onclick="selectOption(this)">D) Linked List</div>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz('computer-science')">Submit Quiz</button>
+                <div id="computer-science-results" class="results"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 INTELLECT. All rights reserved. | Empowering minds, one lesson at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        let selectedAnswers = {};
+
+        function showQuiz(subject) {
+            // Hide all quizzes
+            const quizzes = document.querySelectorAll('.quiz-container');
+            quizzes.forEach(quiz => quiz.classList.remove('active'));
+            
+            // Show selected quiz
+            document.getElementById(subject + '-quiz').classList.add('active');
+            
+            // Update button states
+            const buttons = document.querySelectorAll('.subject-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Reset selected answers for this subject
+            selectedAnswers[subject] = {};
+        }
+
+        function selectOption(option) {
+            // Remove selection from siblings
+            const siblings = option.parentNode.querySelectorAll('.option');
+            siblings.forEach(sibling => sibling.classList.remove('selected'));
+            
+            // Add selection to clicked option
+            option.classList.add('selected');
+            
+            // Store the selection
+            const questionCard = option.closest('.question-card');
+            const questionNumber = questionCard.querySelector('.question-number').textContent;
+            const currentSubject = getCurrentSubject();
+            
+            if (!selectedAnswers[currentSubject]) {
+                selectedAnswers[currentSubject] = {};
+            }
+            
+            selectedAnswers[currentSubject][questionNumber] = {
+                selected: option,
+                isCorrect: option.hasAttribute('data-correct')
+            };
+        }
+
+        function getCurrentSubject() {
+            const activeQuiz = document.querySelector('.quiz-container.active');
+            return activeQuiz.id.replace('-quiz', '');
+        }
+
+        function submitQuiz(subject) {
+            const quiz = document.getElementById(subject + '-quiz');
+            const questions = quiz.querySelectorAll('.question-card');
+            let score = 0;
+            let total = questions.length;
+            
+            questions.forEach((question, index) => {
+                const questionNum = (index + 1).toString();
+                const options = question.querySelectorAll('.option');
+                const correctOption = question.querySelector('[data-correct="true"]');
+                
+                // Show correct answers
+                options.forEach(option => {
+                    if (option.hasAttribute('data-correct')) {
+                        option.classList.add('correct');
+                    } else if (option.classList.contains('selected')) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                
+                // Calculate score
+                if (selectedAnswers[subject] && selectedAnswers[subject][questionNum] && selectedAnswers[subject][questionNum].isCorrect) {
+                    score++;
+                }
+            });
+            
+            // Show results
+            const resultsDiv = document.getElementById(subject + '-results');
+            const percentage = Math.round((score / total) * 100);
+            
+            resultsDiv.innerHTML = `
+                <div class="score">${score}/${total}</div>
+                <h3>Your Score: ${percentage}%</h3>
+                <p>${getScoreMessage(percentage)}</p>
+            `;
+            resultsDiv.style.display = 'block';
+            
+            // Disable submit button
+            event.target.disabled = true;
+            event.target.textContent = 'Quiz Completed';
+        }
+
+        function getScoreMessage(percentage) {
+            if (percentage >= 90) return "Excellent! You have mastered this subject!";
+            if (percentage >= 70) return "Good job! Keep practicing to improve further.";
+            if (percentage >= 50) return "Not bad! Review the topics and try again.";
+            return "Keep studying! Practice makes perfect.";
+        }
+    </script>
+</body>
+</html>
