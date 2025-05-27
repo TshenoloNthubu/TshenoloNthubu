@@ -3,359 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="INTELLECT - Premium GCSE Tutoring platform offering personalized learning experiences with expert tutors across Mathematics, English, Sciences, and Computer Science.">
-    <meta name="keywords" content="GCSE tutoring, online learning, mathematics, english, science, education, Botswana, Gaborone">
-    <meta name="author" content="INTELLECT Education">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="INTELLECT | Premium GCSE Tutoring">
-    <meta property="og:description" content="Transform your academic journey with personalized GCSE tutoring">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://intellect-tutoring.com">
-    <meta property="og:image" content="images/og-image.jpg">
-    
-    <title>INTELLECT | Premium GCSE Tutoring Platform</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
-    
-    <!-- External CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <title>INTELLECT - Online Tutoring Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e40af;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background: #1e40af;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .btn-signup {
+            background: #60a5fa;
+            color: white;
+        }
+
+        .btn-signup:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .typing-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            min-height: 2rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .cta-button {
+            background: #f59e0b;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            color: #1e40af;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .subjects-preview {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .subject-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #1e40af;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .typing-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
+    <header>
+        <nav class="container">
             <a href="index.html" class="logo">INTELLECT</a>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="#subjects" class="nav-link">Subjects</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="feedback.html" class="nav-link">Feedback</a>
-                <button id="loginBtn" class="btn btn-ghost">Login</button>
-                <button id="signupBtn" class="btn btn-primary">Sign Up</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="subjects.html">Subjects</a></li>
+                <li><a href="practice.html">Practice</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="register.html" class="btn btn-signup">Sign Up</a>
             </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-            </button>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
+    <main>
         <section class="hero">
-            <div class="hero-background">
-                <div class="hero-shape hero-shape-1"></div>
-                <div class="hero-shape hero-shape-2"></div>
-                <div class="hero-shape hero-shape-3"></div>
-            </div>
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">INTELLECT</h1>
-                    <p class="hero-subtitle">Premium GCSE Tutoring Platform</p>
-                    <div class="typing-container">
-                        <p class="typing-text" id="typingText">Achieve A* grades with confidence</p>
-                    </div>
-                    <div class="hero-buttons">
-                        <button class="btn btn-secondary btn-lg" onclick="showAuthModal('signup')">Start Free Trial</button>
-                        <a href="about.html" class="btn btn-outline btn-lg">
-                            <i class="fas fa-play"></i> Watch Demo
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <div class="stat-number">98%</div>
-                            <div class="stat-label">Success Rate</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">5000+</div>
-                            <div class="stat-label">Students Helped</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">A*</div>
-                            <div class="stat-label">Average Grade</div>
-                        </div>
-                    </div>
-                </div>
+                <h1>INTELLECT</h1>
+                <div class="typing-text" id="typing-text"></div>
+                <p>Master Physics, Chemistry, Biology, Mathematics, English, and Computer Science with our expert tutoring platform</p>
+                <a href="subjects.html" class="cta-button">Start Learning Today</a>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="section bg-gray">
+        <section class="features">
             <div class="container">
-                <div class="section-header">
-                    <span class="badge">Why Choose INTELLECT</span>
-                    <h2>Transform Your Academic Journey</h2>
-                    <p>Experience personalized learning that adapts to your pace and helps you achieve excellence</p>
-                </div>
+                <h2>Why Choose INTELLECT?</h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <h3>Expert Tutors</h3>
-                        <p>Learn from qualified teachers with proven track records and years of experience</p>
+                        <h3>🎯 Expert Tutoring</h3>
+                        <p>Learn from qualified educators with years of experience in their respective fields</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>1-on-1 Sessions</h3>
-                        <p>Personalized attention tailored to your unique learning style and pace</p>
+                        <h3>📱 Interactive Learning</h3>
+                        <p>Engage with interactive content, quizzes, and practice questions designed for better understanding</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-zap"></i>
-                        </div>
-                        <h3>Interactive Learning</h3>
-                        <p>Engaging lessons with real-time feedback and practice exercises</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h3>Comprehensive Resources</h3>
-                        <p>Access to extensive study materials and practice tests for all subjects</p>
+                        <h3>🏆 Track Progress</h3>
+                        <p>Monitor your learning journey with detailed progress tracking and performance analytics</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Subjects Section -->
-        <section class="section" id="subjects">
+        <section class="subjects-preview">
             <div class="container">
-                <div class="section-header">
-                    <span class="badge">Our Subjects</span>
-                    <h2>Master Every Subject</h2>
-                    <p>Comprehensive tutoring across all major GCSE subjects with expert guidance</p>
-                </div>
+                <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">Our Subjects</h2>
                 <div class="subjects-grid">
                     <div class="subject-card">
-                        <div class="subject-icon bg-blue">📊</div>
-                        <h3>Mathematics</h3>
-                        <p>Master algebra, geometry, statistics, and calculus with step-by-step guidance</p>
-                        <a href="mathematics.html" class="btn btn-outline">
-                            Explore Math <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon bg-green">📚</div>
-                        <h3>English</h3>
-                        <p>Excel in literature, creative writing, grammar, and language analysis</p>
-                        <a href="english.html" class="btn btn-outline">
-                            Explore English <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon bg-emerald">🧬</div>
-                        <h3>Biology</h3>
-                        <p>Explore life sciences, genetics, and the fascinating world of biology</p>
-                        <a href="biology.html" class="btn btn-outline">
-                            Explore Biology <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon bg-purple">⚗️</div>
-                        <h3>Chemistry</h3>
-                        <p>Understand molecular structures, reactions, and chemical principles</p>
-                        <a href="chemistry.html" class="btn btn-outline">
-                            Explore Chemistry <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon bg-red">⚛️</div>
+                        <div class="subject-icon">⚛️</div>
                         <h3>Physics</h3>
-                        <p>Discover the laws of motion, energy, waves, and fundamental forces</p>
-                        <a href="physics.html" class="btn btn-outline">
-                            Explore Physics <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <p>Explore the fundamental laws of nature</p>
                     </div>
                     <div class="subject-card">
-                        <div class="subject-icon bg-orange">💻</div>
+                        <div class="subject-icon">🧪</div>
+                        <h3>Chemistry</h3>
+                        <p>Discover the world of atoms and molecules</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">🧬</div>
+                        <h3>Biology</h3>
+                        <p>Understand life and living organisms</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">📊</div>
+                        <h3>Mathematics</h3>
+                        <p>Master numbers, equations, and logic</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">📚</div>
+                        <h3>English</h3>
+                        <p>Enhance language and communication skills</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">💻</div>
                         <h3>Computer Science</h3>
-                        <p>Learn programming, algorithms, data structures, and computational thinking</p>
-                        <a href="computer-science.html" class="btn btn-outline">
-                            Explore CS <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="section testimonials-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="badge">Success Stories</span>
-                    <h2>What Our Students Say</h2>
-                    <p>Real results from real students who transformed their academic performance</p>
-                </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"INTELLECT helped me go from struggling with algebra to achieving top grades. The tutors are amazing!"</p>
-                        <div class="testimonial-author">
-                            <strong>Sarah Johnson</strong>
-                            <span class="grade">Grade A* in Mathematics</span>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"The interactive lessons made chemistry so much easier to understand. Highly recommend!"</p>
-                        <div class="testimonial-author">
-                            <strong>Michael Chen</strong>
-                            <span class="grade">Grade A in Chemistry</span>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"My writing skills improved dramatically. The feedback was incredibly helpful."</p>
-                        <div class="testimonial-author">
-                            <strong>Emma Williams</strong>
-                            <span class="grade">Grade A in English Literature</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="section cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Excel in Your Studies?</h2>
-                    <p>Join thousands of students who have achieved their academic goals with INTELLECT</p>
-                    <div class="cta-buttons">
-                        <button class="btn btn-secondary btn-lg" onclick="showAuthModal('signup')">
-                            Start Free Trial <i class="fas fa-arrow-right"></i>
-                        </button>
-                        <a href="about.html" class="btn btn-outline-white btn-lg">Learn More</a>
+                        <p>Learn programming and technology</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Auth Modal -->
-    <div id="authModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-content">
-            <button class="modal-close" onclick="hideAuthModal()" aria-label="Close modal">&times;</button>
-            <form id="authForm" class="auth-form">
-                <h2 id="modalTitle">Welcome Back</h2>
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <div class="input-group">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="input-group">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">Continue</button>
-            </form>
-            <div class="welcome-message" id="welcomeMessage">
-                <div class="typing-effect">Welcome to our interactive learning platform!</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4 class="footer-title">INTELLECT</h4>
-                    <p>Transforming education through personalized learning experiences and expert guidance.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="#subjects">Subjects</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Subjects</h4>
-                    <ul class="footer-links">
-                        <li><a href="mathematics.html">Mathematics</a></li>
-                        <li><a href="english.html">English</a></li>
-                        <li><a href="biology.html">Biology</a></li>
-                        <li><a href="chemistry.html">Chemistry</a></li>
-                        <li><a href="physics.html">Physics</a></li>
-                        <li><a href="computer-science.html">Computer Science</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Contact Info</h4>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+267 75372185</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:nthububw@gmail.com">nthububw@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Block 6, Makuruku Street, Plot 2345, Gaborone</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 INTELLECT. All rights reserved. Empowering students to achieve academic excellence.</p>
-            </div>
+            <p>&copy; 2025 INTELLECT. All rights reserved. | Empowering minds, one lesson at a time.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script>
+        // Typing animation for welcome message
+        const typingText = document.getElementById('typing-text');
+        const message = "Welcome to INTELLECT";
+        let i = 0;
+
+        function typeWriter() {
+            if (i < message.length) {
+                typingText.innerHTML += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        // Start typing animation after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 1500);
+        });
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
