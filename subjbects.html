@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - INTELLECT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e40af;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background: #1e40af;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .btn-signup {
+            background: #60a5fa;
+            color: white;
+        }
+
+        .btn-signup:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+
+        .subject-title {
+            color: #1e40af;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .subject-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .subject-topics {
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-topics h4 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .topics-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .topic-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .subject-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1e40af;
+            border: 2px solid #1e40af;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #1e40af;
+            color: white;
+        }
+
+        footer {
+            background: #1e40af;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .subject-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">INTELLECT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="subjects.html">Subjects</a></li>
+                <li><a href="practice.html">Practice</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="register.html" class="btn btn-signup">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Subjects</h1>
+                <p>Explore our comprehensive range of subjects designed to enhance your learning experience</p>
+            </div>
+
+            <div class="subjects-grid">
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-icon">⚛️</div>
+                        <div class="subject-title">Physics</div>
+                    </div>
+                    <div class="subject-description">
+                        Explore the fundamental laws that govern our universe. From mechanics to quantum physics, discover how the world works at every scale.
+                    </div>
+                    <div class="subject-topics">
+                        <h4>Key Topics:</h4>
+                        <div class="topics-list">
+                            <span class="topic-tag">Mechanics</span>
+                            <span class="topic-tag">Thermodynamics</span>
+                            <span class="topic-tag">Electromagnetism</span>
+                            <span class="topic-tag">Optics</span>
+                            <span class="topic-tag">Modern Physics</span>
+                        </div>
+                    </div>
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=physics" class="btn-primary">Start Learning</a>
+                        <a href="practice.html?subject=physics" class="btn-secondary">Practice Questions</a>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-icon">🧪</div>
+                        <div class="subject-title">Chemistry</div>
+                    </div>
+                    <div class="subject-description">
+                        Dive into the world of atoms, molecules, and chemical reactions. Understand how matter behaves and transforms.
+                    </div>
+                    <div class="subject-topics">
+                        <h4>Key Topics:</h4>
+                        <div class="topics-list">
+                            <span class="topic-tag">Atomic Structure</span>
+                            <span class="topic-tag">Chemical Bonding</span>
+                            <span class="topic-tag">Organic Chemistry</span>
+                            <span class="topic-tag">Thermochemistry</span>
+                            <span class="topic-tag">Kinetics</span>
+                        </div>
+                    </div>
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=chemistry" class="btn-primary">Start Learning</a>
+                        <a href="practice.html?subject=chemistry" class="btn-secondary">Practice Questions</a>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-icon">🧬</div>
+                        <div class="subject-title">Biology</div>
+                    </div>
+                    <div class="subject-description">
+                        Explore the fascinating world of living organisms, from cellular processes to complex ecosystems.
+                    </div>
+                    <div class="subject-topics">
+                        <h4>Key Topics:</h4>
+                        <div class="topics-list">
+                            <span class="topic-tag">Cell Biology</span>
+                            <span class="topic-tag">Genetics</span>
+                            <span class="topic-tag">Evolution</span>
+                            <span class="topic-tag">Ecology</span>
+                            <span class="topic-tag">Human Biology</span>
+                        </div>
+                    </div>
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=biology" class="btn-primary">Start Learning</a>
+                        <a href="practice.html?subject=biology" class="btn-secondary">Practice Questions</a>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-icon">📊</div>
+                        <div class="subject-title">Mathematics</div>
+                    </div>
+                    <div class="subject-description">
+                        Master the language of numbers, patterns, and logical reasoning. Build strong foundations for advanced problem-solving.
+                    </div>
+                    <div class="subject-topics">
+                        <h4>Key Topics:</h4>
+                        <div class="topics-list">
+                            <span class="topic-tag">Algebra</span>
+                            <span class="topic-tag">Calculus</span>
+                            <span class="topic-tag">Geometry</span>
+                            <span class="topic-tag">Statistics</span>
+                            <span class="topic-tag">Trigonometry</span>
+                        </div>
+                    </div>
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=mathematics" class="btn-primary">Start Learning</a>
+                        <a href="practice.html?subject=mathematics" class="btn-secondary">Practice Questions</a>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-icon">📚</div>
+                        <div class="subject-title">English</div>
+                    </div>
+                    <div class="subject-description">
+                        Enhance your communication skills, literary analysis, and creative writing abilities through comprehensive English studies.
+                    </div>
+                    <div class="subject-topics">
+                        <h4>Key Topics:</h4>
+                        <div class="topics-list">
+                            <span class="topic-tag">Grammar</span>
+                            <span class="topic-tag">Literature</span>
+                            <span class="topic-tag">Creative Writing</span>
+                            <span class="topic-tag">Essay Writing</span>
+                            <span class="topic-tag">Poetry</span>
+                        </div>
+                    </div>
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=english" class="btn-primary">Start Learning</a>
+                        <a href="practice.html?subject=english" class="btn-secondary">Practice Questions</a>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-icon">💻</div>
+                        <div class="subject-title">Computer Science</div>
+                    </div>
+                    <div class="subject-description">
+                        Learn programming, algorithms, and computational thinking. Prepare for the digital future with hands-on coding experience.
+                    </div>
+                    <div class="subject-topics">
+                        <h4>Key Topics:</h4>
+                        <div class="topics-list">
+                            <span class="topic-tag">Programming</span>
+                            <span class="topic-tag">Algorithms</span>
+                            <span class="topic-tag">Data Structures</span>
+                            <span class="topic-tag">Web Development</span>
+                            <span class="topic-tag">Database</span>
+                        </div>
+                    </div>
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=computer-science" class="btn-primary">Start Learning</a>
+                        <a href="practice.html?subject=computer-science" class="btn-secondary">Practice Questions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 INTELLECT. All rights reserved. | Empowering minds, one lesson at a time.</p>
+        </div>
+    </footer>
+</body>
+</html>
