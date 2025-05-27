@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subjects - INTELLECT</title>
+    <title>Contact Us - INTELLECT</title>
     <style>
         * {
             margin: 0;
@@ -118,118 +118,146 @@
             margin-bottom: 1rem;
         }
 
-        .subjects-grid {
+        .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             margin-bottom: 3rem;
         }
 
-        .subject-card {
+        .contact-info {
             background: white;
             border-radius: 15px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .subject-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #3b82f6, #1e40af);
+        .contact-info h2 {
+            color: #1e40af;
+            margin-bottom: 2rem;
+            font-size: 2rem;
         }
 
-        .subject-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .subject-header {
+        .contact-item {
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
 
-        .subject-icon {
-            font-size: 3rem;
+        .contact-item:hover {
+            background: #e0f2fe;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
             margin-right: 1rem;
+            color: #3b82f6;
+            width: 40px;
+            text-align: center;
         }
 
-        .subject-title {
-            color: #1e40af;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .subject-description {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .subject-topics {
-            margin-bottom: 1.5rem;
-        }
-
-        .subject-topics h4 {
+        .contact-details h3 {
             color: #1e40af;
             margin-bottom: 0.5rem;
         }
 
-        .topics-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        .contact-details p {
+            color: #666;
         }
 
-        .topic-tag {
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 0.3rem 0.8rem;
+        .contact-form {
+            background: white;
             border-radius: 15px;
-            font-size: 0.9rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .subject-actions {
-            display: flex;
-            gap: 1rem;
+        .contact-form h2 {
+            color: #1e40af;
+            margin-bottom: 2rem;
+            font-size: 2rem;
         }
 
-        .btn-primary {
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
             background: linear-gradient(135deg, #3b82f6, #1e40af);
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 2rem;
+            border: none;
             border-radius: 25px;
-            text-decoration: none;
             font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
         }
 
-        .btn-primary:hover {
+        .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: #1e40af;
-            border: 2px solid #1e40af;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        .map-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .btn-secondary:hover {
-            background: #1e40af;
-            color: white;
+        .map-section h2 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0369a1;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         footer {
@@ -245,16 +273,12 @@
                 display: none;
             }
             
-            .subjects-grid {
+            .contact-container {
                 grid-template-columns: 1fr;
             }
             
             .page-header h1 {
                 font-size: 2rem;
-            }
-            
-            .subject-actions {
-                flex-direction: column;
             }
         }
     </style>
@@ -280,153 +304,93 @@
     <main class="main-content">
         <div class="container">
             <div class="page-header">
-                <h1>Our Subjects</h1>
-                <p>Explore our comprehensive range of subjects designed to enhance your learning experience</p>
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team - we're here to help you succeed</p>
             </div>
 
-            <div class="subjects-grid">
-                <div class="subject-card">
-                    <div class="subject-header">
-                        <div class="subject-icon">⚛️</div>
-                        <div class="subject-title">Physics</div>
-                    </div>
-                    <div class="subject-description">
-                        Explore the fundamental laws that govern our universe. From mechanics to quantum physics, discover how the world works at every scale.
-                    </div>
-                    <div class="subject-topics">
-                        <h4>Key Topics:</h4>
-                        <div class="topics-list">
-                            <span class="topic-tag">Mechanics</span>
-                            <span class="topic-tag">Thermodynamics</span>
-                            <span class="topic-tag">Electromagnetism</span>
-                            <span class="topic-tag">Optics</span>
-                            <span class="topic-tag">Modern Physics</span>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+267 7537185</p>
                         </div>
                     </div>
-                    <div class="subject-actions">
-                        <a href="practice.html?subject=physics" class="btn-primary">Start Learning</a>
-                        <a href="practice.html?subject=physics" class="btn-secondary">Practice Questions</a>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>nthububw@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Address</h3>
+                            <p>Block 6 Makuruku Street<br>Gaborone, Botswana</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h3>Office Hours</h3>
+                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="subject-card">
-                    <div class="subject-header">
-                        <div class="subject-icon">🧪</div>
-                        <div class="subject-title">Chemistry</div>
-                    </div>
-                    <div class="subject-description">
-                        Dive into the world of atoms, molecules, and chemical reactions. Understand how matter behaves and transforms.
-                    </div>
-                    <div class="subject-topics">
-                        <h4>Key Topics:</h4>
-                        <div class="topics-list">
-                            <span class="topic-tag">Atomic Structure</span>
-                            <span class="topic-tag">Chemical Bonding</span>
-                            <span class="topic-tag">Organic Chemistry</span>
-                            <span class="topic-tag">Thermochemistry</span>
-                            <span class="topic-tag">Kinetics</span>
+                <div class="contact-form">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
-                    </div>
-                    <div class="subject-actions">
-                        <a href="practice.html?subject=chemistry" class="btn-primary">Start Learning</a>
-                        <a href="practice.html?subject=chemistry" class="btn-secondary">Practice Questions</a>
-                    </div>
-                </div>
 
-                <div class="subject-card">
-                    <div class="subject-header">
-                        <div class="subject-icon">🧬</div>
-                        <div class="subject-title">Biology</div>
-                    </div>
-                    <div class="subject-description">
-                        Explore the fascinating world of living organisms, from cellular processes to complex ecosystems.
-                    </div>
-                    <div class="subject-topics">
-                        <h4>Key Topics:</h4>
-                        <div class="topics-list">
-                            <span class="topic-tag">Cell Biology</span>
-                            <span class="topic-tag">Genetics</span>
-                            <span class="topic-tag">Evolution</span>
-                            <span class="topic-tag">Ecology</span>
-                            <span class="topic-tag">Human Biology</span>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
-                    </div>
-                    <div class="subject-actions">
-                        <a href="practice.html?subject=biology" class="btn-primary">Start Learning</a>
-                        <a href="practice.html?subject=biology" class="btn-secondary">Practice Questions</a>
-                    </div>
-                </div>
 
-                <div class="subject-card">
-                    <div class="subject-header">
-                        <div class="subject-icon">📊</div>
-                        <div class="subject-title">Mathematics</div>
-                    </div>
-                    <div class="subject-description">
-                        Master the language of numbers, patterns, and logical reasoning. Build strong foundations for advanced problem-solving.
-                    </div>
-                    <div class="subject-topics">
-                        <h4>Key Topics:</h4>
-                        <div class="topics-list">
-                            <span class="topic-tag">Algebra</span>
-                            <span class="topic-tag">Calculus</span>
-                            <span class="topic-tag">Geometry</span>
-                            <span class="topic-tag">Statistics</span>
-                            <span class="topic-tag">Trigonometry</span>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
                         </div>
-                    </div>
-                    <div class="subject-actions">
-                        <a href="practice.html?subject=mathematics" class="btn-primary">Start Learning</a>
-                        <a href="practice.html?subject=mathematics" class="btn-secondary">Practice Questions</a>
-                    </div>
-                </div>
 
-                <div class="subject-card">
-                    <div class="subject-header">
-                        <div class="subject-icon">📚</div>
-                        <div class="subject-title">English</div>
-                    </div>
-                    <div class="subject-description">
-                        Enhance your communication skills, literary analysis, and creative writing abilities through comprehensive English studies.
-                    </div>
-                    <div class="subject-topics">
-                        <h4>Key Topics:</h4>
-                        <div class="topics-list">
-                            <span class="topic-tag">Grammar</span>
-                            <span class="topic-tag">Literature</span>
-                            <span class="topic-tag">Creative Writing</span>
-                            <span class="topic-tag">Essay Writing</span>
-                            <span class="topic-tag">Poetry</span>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="enrollment">Course Enrollment</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="subject-actions">
-                        <a href="practice.html?subject=english" class="btn-primary">Start Learning</a>
-                        <a href="practice.html?subject=english" class="btn-secondary">Practice Questions</a>
-                    </div>
-                </div>
 
-                <div class="subject-card">
-                    <div class="subject-header">
-                        <div class="subject-icon">💻</div>
-                        <div class="subject-title">Computer Science</div>
-                    </div>
-                    <div class="subject-description">
-                        Learn programming, algorithms, and computational thinking. Prepare for the digital future with hands-on coding experience.
-                    </div>
-                    <div class="subject-topics">
-                        <h4>Key Topics:</h4>
-                        <div class="topics-list">
-                            <span class="topic-tag">Programming</span>
-                            <span class="topic-tag">Algorithms</span>
-                            <span class="topic-tag">Data Structures</span>
-                            <span class="topic-tag">Web Development</span>
-                            <span class="topic-tag">Database</span>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
                         </div>
-                    </div>
-                    <div class="subject-actions">
-                        <a href="practice.html?subject=computer-science" class="btn-primary">Start Learning</a>
-                        <a href="practice.html?subject=computer-science" class="btn-secondary">Practice Questions</a>
-                    </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="map-section">
+                <h2>Find Us</h2>
+                <p style="margin-bottom: 1rem; color: #666;">Visit our office in Gaborone</p>
+                <div class="map-placeholder">
+                    🗺️ Interactive Map<br>
+                    Block 6 Makuruku Street, Gaborone
                 </div>
             </div>
         </div>
@@ -437,5 +401,38 @@
             <p>&copy; 2025 INTELLECT. All rights reserved. | Empowering minds, one lesson at a time.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
