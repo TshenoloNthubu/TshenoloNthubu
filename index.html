@@ -4,101 +4,271 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTELLECT - Online Tutoring Platform</title>
-   <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">INTELLECT</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="subjects.html">Subjects</a></li>
-                <li><a href="practice.html">Practice</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
-                <a href="register.html" class="btn btn-signup">Sign Up</a>
-            </div>
-        </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <i class="fas fa-book-open"></i>
+                    <span>INTELLECT</span>
+                </div>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="subjects.html" class="nav-link">Subjects</a></li>
+                    <li><a href="practice.html" class="nav-link">Practice</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                </div>
+                
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>INTELLECT</h1>
-                <div class="typing-text" id="typing-text"></div>
-                <p>Master Physics, Chemistry, Biology, Mathematics, English, and Computer Science with our expert tutoring platform</p>
-                <a href="subjects.html" class="cta-button">Start Learning Today</a>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <h2>Why Choose INTELLECT?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>🎯 Expert Tutoring</h3>
-                        <p>Learn from qualified educators with years of experience in their respective fields</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>📱 Interactive Learning</h3>
-                        <p>Engage with interactive content, quizzes, and practice questions designed for better understanding</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🏆 Track Progress</h3>
-                        <p>Monitor your learning journey with detailed progress tracking and performance analytics</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="subjects-preview">
-            <div class="container">
-                <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">Our Subjects</h2>
-                <div class="subjects-grid">
-                    <div class="subject-card">
-                        <div class="subject-icon">⚛️</div>
-                        <h3>Physics</h3>
-                        <p>Explore the fundamental laws of nature</p>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">🧪</div>
-                        <h3>Chemistry</h3>
-                        <p>Discover the world of atoms and molecules</p>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">🧬</div>
-                        <h3>Biology</h3>
-                        <p>Understand life and living organisms</p>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">📊</div>
-                        <h3>Mathematics</h3>
-                        <p>Master numbers, equations, and logic</p>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">📚</div>
-                        <h3>English</h3>
-                        <p>Enhance language and communication skills</p>
-                    </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">💻</div>
-                        <h3>Computer Science</h3>
-                        <p>Learn programming and technology</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
         <div class="container">
-            <p>&copy; 2025 INTELLECT. All rights reserved. | Empowering minds, one lesson at a time.</p>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span id="typing-text"></span>
+                    <span class="cursor">|</span>
+                </h1>
+                <p class="hero-subtitle">Unlock your potential with personalized online tutoring</p>
+                <div class="hero-buttons">
+                    <a href="subjects.html" class="btn btn-primary">
+                        Start Learning <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="about.html" class="btn btn-secondary">
+                        Learn More <i class="fas fa-book-open"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose INTELLECT?</h2>
+                <p class="section-subtitle">Experience the future of learning with our innovative platform designed for academic success</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Expert Tutors</h3>
+                    <p>Learn from qualified professionals with years of teaching experience</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Interactive Learning</h3>
+                    <p>Engage with dynamic content and real-time feedback systems</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Proven Results</h3>
+                    <p>Track your progress and achieve measurable academic improvements</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Flexible Schedule</h3>
+                    <p>Learn at your own pace with 24/7 access to course materials</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Preview -->
+    <section class="subjects-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Subjects</h2>
+                <p class="section-subtitle">Master these essential subjects with our comprehensive curriculum</p>
+            </div>
+            
+            <div class="subjects-grid">
+                <a href="subjects.html" class="subject-card">
+                    <div class="subject-icon">⚛️</div>
+                    <h3>Physics</h3>
+                </a>
+                
+                <a href="subjects.html" class="subject-card">
+                    <div class="subject-icon">🧪</div>
+                    <h3>Chemistry</h3>
+                </a>
+                
+                <a href="subjects.html" class="subject-card">
+                    <div class="subject-icon">🧬</div>
+                    <h3>Biology</h3>
+                </a>
+                
+                <a href="subjects.html" class="subject-card">
+                    <div class="subject-icon">📊</div>
+                    <h3>Mathematics</h3>
+                </a>
+                
+                <a href="subjects.html" class="subject-card">
+                    <div class="subject-icon">📚</div>
+                    <h3>English</h3>
+                </a>
+                
+                <a href="subjects.html" class="subject-card">
+                    <div class="subject-icon">💻</div>
+                    <h3>Computer Science</h3>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <a href="subjects.html" class="btn btn-primary">Explore All Subjects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Student Success Stories</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"INTELLECT helped me improve my math grades from C to A+ in just 3 months!"</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah M.</strong>
+                        <span>Grade 12 • Mathematics</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The interactive practice questions made physics concepts so much clearer."</p>
+                    <div class="testimonial-author">
+                        <strong>John K.</strong>
+                        <span>Grade 11 • Physics</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Amazing platform! The tutors are patient and explain everything perfectly."</p>
+                    <div class="testimonial-author">
+                        <strong>Emma L.</strong>
+                        <span>Grade 10 • Chemistry</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Learning Journey?</h2>
+                <p>Join thousands of students who have transformed their academic performance</p>
+                <div class="cta-buttons">
+                    <a href="signup.html" class="btn btn-white">Get Started Free</a>
+                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-book-open"></i>
+                        <span>INTELLECT</span>
+                    </div>
+                    <p>Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="subjects.html">Subjects</a></li>
+                        <li><a href="practice.html">Practice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>267 7537185</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>nthububw@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Block 6 Makuruku Street, Gaborone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 INTELLECT. All rights reserved. Empowering minds, one student at a time.</p>
+            </div>
         </div>
     </footer>
 
