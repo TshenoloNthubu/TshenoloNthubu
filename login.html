@@ -4,344 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - INTELLECT</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .login-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 100%;
-            max-width: 900px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 600px;
-        }
-
-        .login-form {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .login-visual {
-            background: linear-gradient(135deg, #3b82f6, #1e40af);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .welcome-text {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .visual-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .form-header h1 {
-            color: #1e40af;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-header p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1e40af;
-            font-weight: 600;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .password-container {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .remember-me input[type="checkbox"] {
-            width: auto;
-        }
-
-        .forgot-password {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .forgot-password:hover {
-            text-decoration: underline;
-        }
-
-        .login-btn {
-            background: linear-gradient(135deg, #1e40af, #1e3a8a);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.4);
-        }
-
-        .divider {
-            text-align: center;
-            margin: 1.5rem 0;
-            position: relative;
-            color: #666;
-        }
-
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        .divider span {
-            background: white;
-            padding: 0 1rem;
-        }
-
-        .signup-link {
-            text-align: center;
-            color: #666;
-        }
-
-        .signup-link a {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .signup-link a:hover {
-            text-decoration: underline;
-        }
-
-        .back-home {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .back-home:hover {
-            transform: translateX(-5px);
-        }
-
-        @media (max-width: 768px) {
-            .login-container {
-                grid-template-columns: 1fr;
-                margin: 1rem;
-            }
-            
-            .login-visual {
-                order: -1;
-                min-height: 200px;
-            }
-            
-            .login-form {
-                padding: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <a href="index.html" class="back-home">
-        ← Back to Home
-    </a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <i class="fas fa-book-open"></i>
+                    <span>INTELLECT</span>
+                </div>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="subjects.html" class="nav-link">Subjects</a></li>
+                    <li><a href="practice.html" class="nav-link">Practice</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-login active">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                </div>
+                
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <div class="login-container">
-        <div class="login-form">
-            <div class="form-header">
-                <h1>Welcome Back</h1>
-                <p>Sign in to continue your learning journey</p>
-            </div>
-
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <!-- Header -->
+                <div class="auth-header">
+                    <div class="auth-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your INTELLECT account</p>
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-container">
-                        <input type="password" id="password" name="password" required>
-                        <button type="button" class="password-toggle" onclick="togglePassword()">👁️</button>
+                <!-- Login Form -->
+                <div class="auth-form">
+                    <form id="login-form">
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                                <button type="button" class="password-toggle" id="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="password-error"></span>
+                        </div>
+
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember-me">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-login-primary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <div class="auth-divider">
+                        <span>Or continue with</span>
+                    </div>
+
+                    <!-- Social Login -->
+                    <div class="social-login">
+                        <button class="btn btn-social">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        <button class="btn btn-social">
+                            <i class="fab fa-facebook"></i>
+                            Facebook
+                        </button>
+                    </div>
+
+                    <!-- Sign Up Link -->
+                    <div class="auth-switch">
+                        <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="form-options">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember me</label>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-book-open"></i>
+                        <span>INTELLECT</span>
                     </div>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <p>Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.</p>
                 </div>
-
-                <button type="submit" class="login-btn">Sign In</button>
-            </form>
-
-            <div class="divider">
-                <span>or</span>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="subjects.html">Subjects</a></li>
+                        <li><a href="practice.html">Practice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>267 7537185</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>nthububw@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Block 6 Makuruku Street, Gaborone</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="signup-link">
-                Don't have an account? <a href="register.html">Sign up here</a>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 INTELLECT. All rights reserved. Empowering minds, one student at a time.</p>
             </div>
         </div>
+    </footer>
 
-        <div class="login-visual">
-            <div class="logo">INTELLECT</div>
-            <div class="visual-icon">🎓</div>
-            <div class="welcome-text">
-                Join thousands of students who are already learning with us
-            </div>
-            <div style="opacity: 0.8;">
-                ✓ Expert tutoring<br>
-                ✓ Interactive learning<br>
-                ✓ Progress tracking
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const toggleBtn = document.querySelector('.password-toggle');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleBtn.textContent = '🙈';
-            } else {
-                passwordInput.type = 'password';
-                toggleBtn.textContent = '👁️';
-            }
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if (!email || !password) {
-                alert('Please fill in all fields.');
-                return;
-            }
-            
-            // Simulate login process
-            const loginBtn = document.querySelector('.login-btn');
-            const originalText = loginBtn.textContent;
-            
-            loginBtn.textContent = 'Signing In...';
-            loginBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Login successful! Welcome back to INTELLECT.');
-                // In a real application, you would redirect to the dashboard
-                window.location.href = 'index.html';
-            }, 2000);
-        });
-    </script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
