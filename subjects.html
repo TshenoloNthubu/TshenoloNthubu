@@ -3,436 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - INTELLECT</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #1e3a8a;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1e40af;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #3b82f6;
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .btn-login {
-            background: #1e40af;
-            color: white;
-        }
-
-        .btn-login:hover {
-            background: #1e3a8a;
-            transform: translateY(-2px);
-        }
-
-        .btn-signup {
-            background: #60a5fa;
-            color: white;
-        }
-
-        .btn-signup:hover {
-            background: #3b82f6;
-            transform: translateY(-2px);
-        }
-
-        .main-content {
-            margin-top: 100px;
-            padding: 2rem 0;
-        }
-
-        .page-header {
-            text-align: center;
-            color: white;
-            margin-bottom: 3rem;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-info {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-info h2 {
-            color: #1e40af;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: #f8fafc;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: #e0f2fe;
-            transform: translateX(5px);
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            color: #3b82f6;
-            width: 40px;
-            text-align: center;
-        }
-
-        .contact-details h3 {
-            color: #1e40af;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details p {
-            color: #666;
-        }
-
-        .contact-form {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-form h2 {
-            color: #1e40af;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1e40af;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #3b82f6, #1e40af);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        .map-section {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .map-section h2 {
-            color: #1e40af;
-            margin-bottom: 1rem;
-        }
-
-        .map-placeholder {
-            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-            height: 300px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0369a1;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        footer {
-            background: #1e40af;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>Subjects - INTELLECT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">INTELLECT</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="subjects.html">Subjects</a></li>
-                <li><a href="practice.html">Practice</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
-                <a href="register.html" class="btn btn-signup">Sign Up</a>
-            </div>
-        </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <i class="fas fa-book-open"></i>
+                    <span>INTELLECT</span>
+                </div>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="subjects.html" class="nav-link active">Subjects</a></li>
+                    <li><a href="practice.html" class="nav-link">Practice</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                </div>
+                
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main class="main-content">
+    <!-- Hero Section -->
+    <section class="page-hero">
         <div class="container">
-            <div class="page-header">
-                <h1>Contact Us</h1>
-                <p>Get in touch with our team - we're here to help you succeed</p>
+            <div class="page-hero-content">
+                <h1>Our Subjects</h1>
+                <p>Comprehensive courses designed to help you excel in your academic journey</p>
+                <a href="practice.html" class="btn btn-white">
+                    Start Practicing <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
+        </div>
+    </section>
 
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
+    <!-- Subjects Grid -->
+    <section class="subjects-detail">
+        <div class="container">
+            <div class="subjects-grid-detail">
+                <!-- Physics -->
+                <div class="subject-detail-card" data-subject="physics">
+                    <div class="subject-header">
+                        <div class="subject-icon-large">⚛️</div>
+                        <h3>Physics</h3>
+                        <p>Explore the fundamental laws of nature, from mechanics to quantum physics</p>
+                    </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>+267 7537185</p>
+                    <div class="subject-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>12 weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>150+ students</span>
                         </div>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>nthububw@gmail.com</p>
-                        </div>
+                    
+                    <div class="subject-topics" style="display: none;">
+                        <h4>Topics Covered:</h4>
+                        <ul>
+                            <li>Mechanics</li>
+                            <li>Thermodynamics</li>
+                            <li>Electromagnetism</li>
+                            <li>Waves & Optics</li>
+                            <li>Modern Physics</li>
+                        </ul>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h3>Address</h3>
-                            <p>Block 6 Makuruku Street<br>Gaborone, Botswana</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div class="contact-details">
-                            <h3>Office Hours</h3>
-                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM</p>
-                        </div>
+                    
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=physics" class="btn btn-primary">
+                            Practice Questions <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button class="btn btn-outline toggle-topics">View Topics</button>
                     </div>
                 </div>
 
-                <div class="contact-form">
-                    <h2>Send us a Message</h2>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                <!-- Chemistry -->
+                <div class="subject-detail-card" data-subject="chemistry">
+                    <div class="subject-header">
+                        <div class="subject-icon-large">🧪</div>
+                        <h3>Chemistry</h3>
+                        <p>Discover the world of atoms, molecules, and chemical reactions</p>
+                    </div>
+                    
+                    <div class="subject-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>Intermediate</span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>10 weeks</span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>200+ students</span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="enrollment">Course Enrollment</option>
-                                <option value="technical">Technical Support</option>
-                                <option value="feedback">Feedback</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+                    </div>
+                    
+                    <div class="subject-topics" style="display: none;">
+                        <h4>Topics Covered:</h4>
+                        <ul>
+                            <li>Atomic Structure</li>
+                            <li>Chemical Bonding</li>
+                            <li>Organic Chemistry</li>
+                            <li>Inorganic Chemistry</li>
+                            <li>Physical Chemistry</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=chemistry" class="btn btn-primary">
+                            Practice Questions <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button class="btn btn-outline toggle-topics">View Topics</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="map-section">
-                <h2>Find Us</h2>
-                <p style="margin-bottom: 1rem; color: #666;">Visit our office in Gaborone</p>
-                <div class="map-placeholder">
-                    🗺️ Interactive Map<br>
-                    Block 6 Makuruku Street, Gaborone
+                <!-- Biology -->
+                <div class="subject-detail-card" data-subject="biology">
+                    <div class="subject-header">
+                        <div class="subject-icon-large">🧬</div>
+                        <h3>Biology</h3>
+                        <p>Study life and living organisms from cells to ecosystems</p>
+                    </div>
+                    
+                    <div class="subject-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>11 weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>180+ students</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-topics" style="display: none;">
+                        <h4>Topics Covered:</h4>
+                        <ul>
+                            <li>Cell Biology</li>
+                            <li>Genetics</li>
+                            <li>Evolution</li>
+                            <li>Ecology</li>
+                            <li>Human Physiology</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=biology" class="btn btn-primary">
+                            Practice Questions <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button class="btn btn-outline toggle-topics">View Topics</button>
+                    </div>
+                </div>
+
+                <!-- Mathematics -->
+                <div class="subject-detail-card" data-subject="mathematics">
+                    <div class="subject-header">
+                        <div class="subject-icon-large">📊</div>
+                        <h3>Mathematics</h3>
+                        <p>Master mathematical concepts from algebra to calculus</p>
+                    </div>
+                    
+                    <div class="subject-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>All Levels</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>14 weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>300+ students</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-topics" style="display: none;">
+                        <h4>Topics Covered:</h4>
+                        <ul>
+                            <li>Algebra</li>
+                            <li>Geometry</li>
+                            <li>Trigonometry</li>
+                            <li>Calculus</li>
+                            <li>Statistics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=mathematics" class="btn btn-primary">
+                            Practice Questions <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button class="btn btn-outline toggle-topics">View Topics</button>
+                    </div>
+                </div>
+
+                <!-- English -->
+                <div class="subject-detail-card" data-subject="english">
+                    <div class="subject-header">
+                        <div class="subject-icon-large">📚</div>
+                        <h3>English</h3>
+                        <p>Enhance your language skills, literature analysis, and writing</p>
+                    </div>
+                    
+                    <div class="subject-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>All Levels</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>12 weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>250+ students</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-topics" style="display: none;">
+                        <h4>Topics Covered:</h4>
+                        <ul>
+                            <li>Grammar</li>
+                            <li>Literature</li>
+                            <li>Creative Writing</li>
+                            <li>Essay Writing</li>
+                            <li>Reading Comprehension</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=english" class="btn btn-primary">
+                            Practice Questions <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button class="btn btn-outline toggle-topics">View Topics</button>
+                    </div>
+                </div>
+
+                <!-- Computer Science -->
+                <div class="subject-detail-card" data-subject="computer-science">
+                    <div class="subject-header">
+                        <div class="subject-icon-large">💻</div>
+                        <h3>Computer Science</h3>
+                        <p>Learn programming, algorithms, and computational thinking</p>
+                    </div>
+                    
+                    <div class="subject-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>Beginner to Advanced</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>16 weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>120+ students</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-topics" style="display: none;">
+                        <h4>Topics Covered:</h4>
+                        <ul>
+                            <li>Programming Basics</li>
+                            <li>Data Structures</li>
+                            <li>Algorithms</li>
+                            <li>Web Development</li>
+                            <li>Database Systems</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-actions">
+                        <a href="practice.html?subject=computer-science" class="btn btn-primary">
+                            Practice Questions <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button class="btn btn-outline toggle-topics">View Topics</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
+    <!-- Features Section -->
+    <section class="subject-features">
         <div class="container">
-            <p>&copy; 2025 INTELLECT. All rights reserved. | Empowering minds, one lesson at a time.</p>
+            <div class="section-header">
+                <h2 class="section-title">What Makes Our Subjects Special?</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Comprehensive Curriculum</h3>
+                    <p>Each subject covers all essential topics with detailed explanations and real-world applications</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from qualified teachers with years of experience in their respective fields</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Interactive Practice</h3>
+                    <p>Engage with hands-on exercises, quizzes, and practice questions for better understanding</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Learning?</h2>
+                <p>Choose your subject and begin your journey to academic excellence today</p>
+                <div class="cta-buttons">
+                    <a href="practice.html" class="btn btn-white">Start Practicing</a>
+                    <a href="signup.html" class="btn btn-outline">Sign Up Free</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-book-open"></i>
+                        <span>INTELLECT</span>
+                    </div>
+                    <p>Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="subjects.html">Subjects</a></li>
+                        <li><a href="practice.html">Practice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>267 7537185</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>nthububw@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Block 6 Makuruku Street, Gaborone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 INTELLECT. All rights reserved. Empowering minds, one student at a time.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you within 24 hours.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
