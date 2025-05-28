@@ -3,312 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - INTELLECT</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #1e3a8a;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1e40af;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #3b82f6;
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .btn-login {
-            background: #1e40af;
-            color: white;
-        }
-
-        .btn-login:hover {
-            background: #1e3a8a;
-            transform: translateY(-2px);
-        }
-
-        .btn-signup {
-            background: #60a5fa;
-            color: white;
-        }
-
-        .btn-signup:hover {
-            background: #3b82f6;
-            transform: translateY(-2px);
-        }
-
-        .main-content {
-            margin-top: 100px;
-            padding: 2rem 0;
-        }
-
-        .about-hero {
-            background: white;
-            border-radius: 15px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-hero h1 {
-            color: #1e40af;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .einstein-section {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-            align-items: center;
-            margin: 2rem 0;
-        }
-
-        .einstein-image {
-            text-align: center;
-        }
-
-        .einstein-image img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #1e40af;
-        }
-
-        .einstein-quote {
-            background: linear-gradient(135deg, #3b82f6, #1e40af);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            position: relative;
-        }
-
-        .einstein-quote::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .quote-text {
-            font-size: 1.3rem;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .quote-author {
-            text-align: right;
-            font-weight: bold;
-        }
-
-        .story-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .story-section h2 {
-            color: #1e40af;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .story-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .mission-vision {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .mission, .vision {
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .mission h3, .vision h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: #1e40af;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .einstein-section {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .mission-vision {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-hero h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>About - INTELLECT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">INTELLECT</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="subjects.html">Subjects</a></li>
-                <li><a href="practice.html">Practice</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
-                <a href="register.html" class="btn btn-signup">Sign Up</a>
-            </div>
-        </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <i class="fas fa-book-open"></i>
+                    <span>INTELLECT</span>
+                </div>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="subjects.html" class="nav-link">Subjects</a></li>
+                    <li><a href="practice.html" class="nav-link">Practice</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                </div>
+                
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main class="main-content">
+    <!-- Hero Section -->
+    <section class="page-hero">
         <div class="container">
-            <div class="about-hero">
+            <div class="page-hero-content">
                 <h1>About INTELLECT</h1>
-                <p style="text-align: center; font-size: 1.2rem; color: #666;">Empowering minds through innovative online education</p>
+                <p>Empowering minds through innovative education since 2025</p>
             </div>
+        </div>
+    </section>
 
-            <div class="einstein-section">
-                <div class="einstein-image">
-                    <img src="/placeholder.svg?height=200&width=200" alt="Albert Einstein" style="background: linear-gradient(45deg, #f0f0f0, #e0e0e0);">
-                    <p style="margin-top: 1rem; font-weight: bold; color: #1e40af;">Albert Einstein</p>
-                </div>
-                <div class="einstein-quote">
-                    <div class="quote-text">
-                        "Education is not the learning of facts, but the training of the mind to think."
+    <!-- Einstein Quote Section -->
+    <section class="einstein-quote">
+        <div class="container">
+            <div class="quote-card">
+                <div class="quote-content">
+                    <div class="einstein-image">
+                        <img src="https://via.placeholder.com/200x200/8B0000/FFFFFF?text=Einstein" alt="Albert Einstein">
                     </div>
-                    <div class="quote-author">- Albert Einstein</div>
+                    <div class="quote-text">
+                        <blockquote>
+                            "Education is not the learning of facts, but the training of the mind to think."
+                        </blockquote>
+                        <cite>— Albert Einstein</cite>
+                    </div>
                 </div>
             </div>
+            <p class="quote-explanation">
+                This profound quote by Albert Einstein perfectly encapsulates our philosophy at INTELLECT. We believe that
+                true education goes beyond memorizing facts—it's about developing critical thinking, problem-solving
+                skills, and fostering a genuine love for learning.
+            </p>
+        </div>
+    </section>
 
-            <div class="story-section">
-                <h2>Our Story</h2>
+    <!-- Our Story Section -->
+    <section class="our-story">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Story</h2>
+            </div>
+            
+            <div class="story-card">
+                <div class="story-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Founded in 2025</h3>
+                </div>
+                
                 <div class="story-content">
-                    <p>Founded in 2025, INTELLECT was born from a simple yet powerful vision: to make quality education accessible to everyone, everywhere. Our journey began when a group of passionate educators and technology enthusiasts came together with a shared belief that learning should be engaging, interactive, and tailored to each student's unique needs.</p>
-                    
-                    <p>Inspired by Einstein's philosophy that education is about training the mind to think rather than merely memorizing facts, we set out to create a platform that would revolutionize online learning. We recognized that traditional educational methods often failed to capture students' imagination and curiosity.</p>
-                    
-                    <p>INTELLECT was designed to bridge this gap by combining cutting-edge technology with proven pedagogical approaches. Our platform offers comprehensive courses in Physics, Chemistry, Biology, Mathematics, English, and Computer Science, each carefully crafted to stimulate critical thinking and foster deep understanding.</p>
-                    
-                    <p>What sets us apart is our commitment to interactive learning. We believe that students learn best when they are actively engaged with the material, which is why our platform features interactive quizzes, practice questions, and real-time feedback mechanisms.</p>
-                    
-                    <p>Since our launch, we have helped thousands of students achieve their academic goals and develop a genuine love for learning. Our success is measured not just by improved grades, but by the confidence and curiosity we instill in our students.</p>
-                </div>
-            </div>
+                    <p>
+                        INTELLECT was born from a simple yet powerful vision: to make quality education accessible to every
+                        student, regardless of their location or circumstances. In early 2025, our founder recognized the
+                        growing need for personalized, interactive learning experiences that could adapt to each student's
+                        unique learning style.
+                    </p>
 
-            <div class="mission-vision">
-                <div class="mission">
-                    <h3>🎯 Our Mission</h3>
-                    <p>To provide world-class online education that empowers students to reach their full potential through innovative teaching methods and personalized learning experiences.</p>
-                </div>
-                <div class="vision">
-                    <h3>🌟 Our Vision</h3>
-                    <p>To become the leading global platform for online education, where every student has access to quality learning resources and expert guidance.</p>
+                    <p>
+                        What started as a small initiative to help local students in Gaborone quickly evolved into a
+                        comprehensive online tutoring platform. We noticed that traditional teaching methods weren't reaching
+                        every student effectively, and many bright minds were struggling not because they lacked ability, but
+                        because they needed a different approach to learning.
+                    </p>
+
+                    <p>
+                        Our breakthrough came when we developed our interactive practice system, combining the wisdom of
+                        experienced educators with cutting-edge technology. We realized that students learn best when they can
+                        practice at their own pace, receive immediate feedback, and have access to support whenever they need
+                        it.
+                    </p>
+
+                    <p>
+                        Today, INTELLECT serves students across Botswana and beyond, offering comprehensive tutoring in six
+                        core subjects: Physics, Chemistry, Biology, Mathematics, English, and Computer Science. Our platform
+                        has helped hundreds of students improve their grades, build confidence, and develop a genuine passion
+                        for learning.
+                    </p>
+
+                    <p>
+                        We believe that every student has the potential to excel, and our mission is to provide the tools,
+                        support, and encouragement they need to unlock that potential. As we continue to grow, we remain
+                        committed to our founding principle: education should inspire, challenge, and empower every learner to
+                        achieve their dreams.
+                    </p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
+    <!-- Mission & Values -->
+    <section class="mission-values">
         <div class="container">
-            <p>&copy; 2025 INTELLECT. All rights reserved. | Empowering minds, one lesson at a time.</p>
+            <div class="section-header">
+                <h2 class="section-title">Our Mission & Values</h2>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide accessible, high-quality education that empowers students to achieve academic excellence and develop critical thinking skills for lifelong success.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Passion for Learning</h3>
+                    <p>We foster a genuine love for learning by making education engaging, interactive, and personally meaningful for every student.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Student-Centered</h3>
+                    <p>Every decision we make is guided by what's best for our students. We adapt our methods to meet individual learning needs and preferences.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We maintain the highest standards in our content, teaching methods, and student support to ensure exceptional learning outcomes.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously evolve our platform and teaching methods, incorporating the latest educational research and technology.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Empowerment</h3>
+                    <p>We believe in empowering students to become independent learners who can tackle any challenge with confidence and creativity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Impact</h2>
+            </div>
+            
+            <div class="impact-stats">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Students Helped</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Core Subjects</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-book-open"></i>
+                        <span>INTELLECT</span>
+                    </div>
+                    <p>Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="subjects.html">Subjects</a></li>
+                        <li><a href="practice.html">Practice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>267 7537185</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>nthububw@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Block 6 Makuruku Street, Gaborone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 INTELLECT. All rights reserved. Empowering minds, one student at a time.</p>
+            </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
