@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -25,6 +24,7 @@
                     <li><a href="subjects.html" class="nav-link">Subjects</a></li>
                     <li><a href="practice.html" class="nav-link">Practice</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
                 </ul>
                 
                 <div class="nav-auth">
@@ -49,9 +49,12 @@
                     <span class="cursor">|</span>
                 </h1>
                 <p class="hero-subtitle">Unlock your potential with personalized online tutoring</p>
+                <div class="hero-price-highlight">
+                    <span class="price-badge">Starting from P199/month</span>
+                </div>
                 <div class="hero-buttons">
-                    <a href="subjects.html" class="btn btn-primary">
-                        Start Learning <i class="fas fa-arrow-right"></i>
+                    <a href="#pricing" class="btn btn-primary">
+                        View Pricing <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="about.html" class="btn btn-secondary">
                         Learn More <i class="fas fa-book-open"></i>
@@ -108,6 +111,255 @@
             </div>
         </div>
     </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Learning Plan</h2>
+                <p class="section-subtitle">Affordable pricing plans designed for every student's needs</p>
+                <div class="currency-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>All prices are in Botswana Pula (BWP)</span>
+                </div>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3>Basic Plan</h3>
+                        <div class="plan-price">
+                            <span class="currency">P</span>
+                            <span class="amount">199</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">Perfect for getting started with online learning</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Access to 3 subjects</li>
+                            <li><i class="fas fa-check"></i> 100 practice questions per month</li>
+                            <li><i class="fas fa-check"></i> Basic progress tracking</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="btn btn-plan" onclick="selectPlan('basic', 199)">
+                        Choose Basic Plan
+                    </button>
+                </div>
+
+                <!-- Standard Plan (Most Popular) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3>Standard Plan</h3>
+                        <div class="plan-price">
+                            <span class="currency">P</span>
+                            <span class="amount">399</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">Ideal for serious students seeking comprehensive learning</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Access to all 6 subjects</li>
+                            <li><i class="fas fa-check"></i> Unlimited practice questions</li>
+                            <li><i class="fas fa-check"></i> Advanced progress analytics</li>
+                            <li><i class="fas fa-check"></i> Live chat support</li>
+                            <li><i class="fas fa-check"></i> Downloadable study materials</li>
+                            <li><i class="fas fa-check"></i> 2 one-on-one tutoring sessions</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="btn btn-plan btn-popular" onclick="selectPlan('standard', 399)">
+                        Choose Standard Plan
+                    </button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3>Premium Plan</h3>
+                        <div class="plan-price">
+                            <span class="currency">P</span>
+                            <span class="amount">699</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p class="plan-description">Complete learning solution with premium features</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Everything in Standard Plan</li>
+                            <li><i class="fas fa-check"></i> Unlimited one-on-one tutoring</li>
+                            <li><i class="fas fa-check"></i> Priority support (24/7)</li>
+                            <li><i class="fas fa-check"></i> Custom study plans</li>
+                            <li><i class="fas fa-check"></i> Exam preparation materials</li>
+                            <li><i class="fas fa-check"></i> Certificate of completion</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="btn btn-plan" onclick="selectPlan('premium', 699)">
+                        Choose Premium Plan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="payment-methods">
+                <h3>Accepted Payment Methods</h3>
+                <div class="payment-icons">
+                    <div class="payment-method">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Credit/Debit Cards</span>
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Orange Money</span>
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mascom MyZaka</span>
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-university"></i>
+                        <span>Bank Transfer</span>
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-wallet"></i>
+                        <span>BTC Smega</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Complete Your Payment</h2>
+                <span class="close" onclick="closePaymentModal()">&times;</span>
+            </div>
+            
+            <div class="modal-body">
+                <div class="payment-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-item">
+                        <span id="selected-plan-name">Standard Plan</span>
+                        <span id="selected-plan-price">P399/month</span>
+                    </div>
+                    <div class="summary-total">
+                        <strong>Total: <span id="total-amount">P399</span></strong>
+                    </div>
+                </div>
+
+                <div class="payment-form">
+                    <h3>Select Payment Method</h3>
+                    
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPaymentMethod('card')">
+                            <input type="radio" name="payment-method" value="card" id="card-payment">
+                            <label for="card-payment">
+                                <i class="fas fa-credit-card"></i>
+                                Credit/Debit Card
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option" onclick="selectPaymentMethod('orange')">
+                            <input type="radio" name="payment-method" value="orange" id="orange-payment">
+                            <label for="orange-payment">
+                                <i class="fas fa-mobile-alt"></i>
+                                Orange Money
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option" onclick="selectPaymentMethod('mascom')">
+                            <input type="radio" name="payment-method" value="mascom" id="mascom-payment">
+                            <label for="mascom-payment">
+                                <i class="fas fa-mobile-alt"></i>
+                                Mascom MyZaka
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option" onclick="selectPaymentMethod('bank')">
+                            <input type="radio" name="payment-method" value="bank" id="bank-payment">
+                            <label for="bank-payment">
+                                <i class="fas fa-university"></i>
+                                Bank Transfer
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Card Payment Form -->
+                    <div id="card-form" class="payment-details" style="display: none;">
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-name">Cardholder Name</label>
+                            <input type="text" id="card-name" placeholder="John Doe">
+                        </div>
+                    </div>
+
+                    <!-- Mobile Money Form -->
+                    <div id="mobile-form" class="payment-details" style="display: none;">
+                        <div class="form-group">
+                            <label for="mobile-number">Mobile Number</label>
+                            <input type="tel" id="mobile-number" placeholder="7X XXX XXX">
+                        </div>
+                        <div class="mobile-instructions">
+                            <p><strong>Instructions:</strong></p>
+                            <ol id="mobile-steps">
+                                <!-- Steps will be populated by JavaScript -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Bank Transfer Form -->
+                    <div id="bank-form" class="payment-details" style="display: none;">
+                        <div class="bank-details">
+                            <h4>Bank Transfer Details</h4>
+                            <div class="bank-info">
+                                <p><strong>Bank:</strong> First National Bank Botswana</p>
+                                <p><strong>Account Name:</strong> INTELLECT TUTORING</p>
+                                <p><strong>Account Number:</strong> 62XXXXXXXXXX</p>
+                                <p><strong>Branch Code:</strong> 282267</p>
+                                <p><strong>Reference:</strong> <span id="payment-reference"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="transfer-reference">Your Reference Number</label>
+                                <input type="text" id="transfer-reference" placeholder="Enter your transfer reference">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-actions">
+                        <button class="btn btn-secondary" onclick="closePaymentModal()">Cancel</button>
+                        <button class="btn btn-primary" onclick="processPayment()" id="pay-button">
+                            Pay Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Subjects Preview -->
     <section class="subjects-preview">
@@ -171,7 +423,7 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p>"INTELLECT helped me improve my math grades from C to A+ in just 3 months!"</p>
+                    <p>"INTELLECT helped me improve my math grades from C to A+ in just 3 months! The payment was so easy with Orange Money."</p>
                     <div class="testimonial-author">
                         <strong>Sarah M.</strong>
                         <span>Grade 12 • Mathematics</span>
@@ -186,7 +438,7 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p>"The interactive practice questions made physics concepts so much clearer."</p>
+                    <p>"The interactive practice questions made physics concepts so much clearer. Worth every pula!"</p>
                     <div class="testimonial-author">
                         <strong>John K.</strong>
                         <span>Grade 11 • Physics</span>
@@ -201,10 +453,39 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p>"Amazing platform! The tutors are patient and explain everything perfectly."</p>
+                    <p>"Amazing platform! The tutors are patient and explain everything perfectly. The Standard plan is perfect for my needs."</p>
                     <div class="testimonial-author">
                         <strong>Emma L.</strong>
                         <span>Grade 10 • Chemistry</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Money Back Guarantee -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-content">
+                <div class="guarantee-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="guarantee-text">
+                    <h3>30-Day Money Back Guarantee</h3>
+                    <p>Not satisfied with your learning experience? Get a full refund within 30 days, no questions asked.</p>
+                </div>
+                <div class="guarantee-features">
+                    <div class="guarantee-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Secure Payments</span>
+                    </div>
+                    <div class="guarantee-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Instant Access</span>
+                    </div>
+                    <div class="guarantee-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cancel Anytime</span>
                     </div>
                 </div>
             </div>
@@ -218,7 +499,7 @@
                 <h2>Ready to Start Your Learning Journey?</h2>
                 <p>Join thousands of students who have transformed their academic performance</p>
                 <div class="cta-buttons">
-                    <a href="signup.html" class="btn btn-white">Get Started Free</a>
+                    <a href="#pricing" class="btn btn-white">Choose Your Plan</a>
                     <a href="contact.html" class="btn btn-outline">Contact Us</a>
                 </div>
             </div>
@@ -235,6 +516,9 @@
                         <span>INTELLECT</span>
                     </div>
                     <p>Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.</p>
+                    <div class="payment-security">
+                        <p><i class="fas fa-lock"></i> Secure payments powered by industry-standard encryption</p>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -244,6 +528,7 @@
                         <li><a href="about.html">About</a></li>
                         <li><a href="subjects.html">Subjects</a></li>
                         <li><a href="practice.html">Practice</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
                     </ul>
                 </div>
                 
@@ -268,10 +553,16 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2025 INTELLECT. All rights reserved. Empowering minds, one student at a time.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Refund Policy</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <script src="payment.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
