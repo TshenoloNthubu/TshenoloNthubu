@@ -4,9 +4,945 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTELLECT - Online Tutoring Platform</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .nav-brand i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #2563eb;
+        }
+
+        .nav-auth {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: #333;
+            border: 1px solid #e5e7eb;
+        }
+
+        .btn-signup {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-price-highlight {
+            margin-bottom: 2rem;
+        }
+
+        .price-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: #2563eb;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Section Styles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: #f9fafb;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Section - Floating with Borders */
+        .pricing-section {
+            padding: 6rem 0;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .pricing-section .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            bottom: 50px;
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .pricing-section::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 25px;
+            z-index: 2;
+        }
+
+        .currency-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid #f1f5f9;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #2563eb;
+        }
+
+        .pricing-card.popular {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0 0 12px 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .plan-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .period {
+            font-size: 1rem;
+            color: #6b7280;
+        }
+
+        .plan-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .plan-features ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .plan-features i {
+            color: #10b981;
+            font-size: 0.875rem;
+        }
+
+        .btn-plan {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border-radius: 8px;
+        }
+
+        .btn-popular {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .payment-methods h3 {
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .payment-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            min-width: 120px;
+        }
+
+        .payment-method i {
+            font-size: 1.5rem;
+            color: #2563eb;
+        }
+
+        .payment-method span {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #1f2937;
+        }
+
+        .close {
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .close:hover {
+            color: #374151;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .payment-summary {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-total {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .payment-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-option {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            border-color: #2563eb;
+        }
+
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-option input[type="radio"]:checked + label {
+            color: #2563eb;
+        }
+
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .payment-details {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .payment-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        /* Subjects Section */
+        .subjects-preview {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: #f9fafb;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .testimonial-author strong {
+            display: block;
+            color: #1f2937;
+        }
+
+        .testimonial-author span {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            padding: 4rem 0;
+            background: #2563eb;
+            color: white;
+        }
+
+        .guarantee-content {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .guarantee-icon {
+            font-size: 3rem;
+        }
+
+        .guarantee-features {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .guarantee-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand i {
+            margin-right: 0.5rem;
+            color: #2563eb;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #f9fafb;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #2563eb;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-item i {
+            color: #2563eb;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .payment-security {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .payment-security i {
+            color: #10b981;
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+
+            .guarantee-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .guarantee-features {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pricing-section::before,
+            .pricing-section::after {
+                left: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .payment-icons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -497,72 +1433,4 @@
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Start Your Learning Journey?</h2>
-                <p>Join thousands of students who have transformed their academic performance</p>
-                <div class="cta-buttons">
-                    <a href="#pricing" class="btn btn-white">Choose Your Plan</a>
-                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <i class="fas fa-book-open"></i>
-                        <span>INTELLECT</span>
-                    </div>
-                    <p>Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.</p>
-                    <div class="payment-security">
-                        <p><i class="fas fa-lock"></i> Secure payments powered by industry-standard encryption</p>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="subjects.html">Subjects</a></li>
-                        <li><a href="practice.html">Practice</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>267 7537185</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>nthububw@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Block 6 Makuruku Street, Gaborone</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 INTELLECT. All rights reserved. Empowering minds, one student at a time.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Refund Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="payment.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+                <p>Join thousands of student
