@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - INTELLECT</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Ensure this path is correct -->
 </head>
 <body>
     <!-- Header -->
@@ -54,7 +53,7 @@
 
                 <!-- Login Form -->
                 <div class="auth-form">
-                    <form id="login-form">
+                    <form id="login-form" action="login-handler.php" method="POST"> <!-- Specify the form action -->
                         <!-- Email Field -->
                         <div class="form-group">
                             <label for="email">Email Address</label>
@@ -71,7 +70,7 @@
                             <div class="input-group">
                                 <i class="fas fa-lock"></i>
                                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                                <button type="button" class="password-toggle" id="password-toggle">
+                                <button type="button" class="password-toggle" id="password-toggle" aria-label="Toggle password visibility">
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </div>
@@ -81,7 +80,7 @@
                         <!-- Remember Me & Forgot Password -->
                         <div class="form-options">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="remember-me">
+                                <input type="checkbox" id="remember-me" name="remember-me">
                                 <span class="checkmark"></span>
                                 Remember me
                             </label>
@@ -168,7 +167,6 @@
         </div>
     </footer>
 
-   
     <script src="script.js"></script>
 </body>
 </html>
