@@ -1,35 +1,842 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subjects - INTELLECT</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Theme Variables */
+        :root {
+            --primary: #dc2626;
+            --primary-dark: #b91c1c;
+            --primary-light: rgba(220, 38, 38, 0.1);
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-tertiary: #d1d5db;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f8fafc;
+            --border-color: #e5e7eb;
+            --border-color-light: #f1f5f9;
+            --border-color-accent: #cbd5e1;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-color-hover: rgba(0, 0, 0, 0.15);
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --footer-bg: #1f2937;
+            --footer-text: #ffffff;
+        }
+
+        /* Dark Theme */
+        html[data-theme='dark'] {
+            --primary: #dc2626;
+            --primary-dark: #ef4444;
+            --primary-light: rgba(220, 38, 38, 0.2);
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-tertiary: #6b7280;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-tertiary: #0f172a;
+            --border-color: #374151;
+            --border-color-light: #1f2937;
+            --border-color-accent: #4b5563;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-color-hover: rgba(0, 0, 0, 0.4);
+            --card-bg: #1e293b;
+            --header-bg: rgba(17, 24, 39, 0.95);
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --footer-bg: #0f172a;
+            --footer-text: #f9fafb;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Theme Switcher */
+        .theme-switch {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            background: var(--border-color);
+            border-radius: 24px;
+            padding: 3px;
+            cursor: pointer;
+            margin-left: 15px;
+            width: 56px;
+            height: 28px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-switch-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: var(--bg-primary);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        html[data-theme='light'] .theme-switch-icon {
+            transform: translateX(0);
+        }
+
+        html[data-theme='dark'] .theme-switch-icon {
+            transform: translateX(28px);
+        }
+
+        .sun-icon, .moon-icon {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        html[data-theme='light'] .sun-icon {
+            opacity: 1;
+        }
+
+        html[data-theme='dark'] .moon-icon {
+            opacity: 1;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-brand i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-auth {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-signup {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .page-hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Subjects Detail */
+        .subjects-detail {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .subjects-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-detail-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px var(--shadow-color);
+            border: 2px solid var(--border-color-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .subject-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-color-hover);
+            border-color: var(--primary);
+        }
+
+        .subject-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .subject-icon-large {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .subject-header p {
+            color: var(--text-secondary);
+        }
+
+        .subject-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-item i {
+            color: var(--primary);
+        }
+
+        .subject-topics {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .subject-topics h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-topics ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .subject-topics li {
+            padding: 0.25rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .subject-topics li:before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .subject-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .subject-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+
+        /* Practice Questions Modal */
+        .practice-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .practice-modal-content {
+            background-color: var(--bg-primary);
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+
+        .practice-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .practice-modal-header h2 {
+            margin: 0;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .close {
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-secondary);
+            border: none;
+            background: none;
+        }
+
+        .close:hover {
+            color: var(--text-primary);
+        }
+
+        .practice-modal-body {
+            padding: 2rem;
+        }
+
+        .question-container {
+            margin-bottom: 2rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .question-number {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .difficulty-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .difficulty-easy {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .difficulty-medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .difficulty-hard {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        html[data-theme='dark'] .difficulty-easy {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        html[data-theme='dark'] .difficulty-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        html[data-theme='dark'] .difficulty-hard {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .question-options {
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--bg-primary);
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option.correct {
+            border-color: var(--success-color);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .option.incorrect {
+            border-color: var(--error-color);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .question-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .question-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback-correct {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success-color);
+            color: var(--success-color);
+        }
+
+        .feedback-incorrect {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--error-color);
+            color: var(--error-color);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .score-display h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .score-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* Features Section */
+        .subject-features {
+            padding: 6rem 0;
+            background: var(--bg-primary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--footer-text);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--header-bg);
+                padding: 1rem;
+                box-shadow: 0 4px 10px var(--shadow-color);
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .page-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .subjects-grid-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .subject-actions {
+                flex-direction: column;
+            }
+
+            .question-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .practice-modal-content {
+                width: 98%;
+                margin: 1% auto;
+            }
+
+            .nav-auth {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <div class="nav-brand">
+                <a href="index.html" class="nav-brand">
                     <i class="fas fa-book-open"></i>
                     <span>INTELLECT</span>
-                </div>
+                </a>
                 
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="subjects.html" class="nav-link active">Subjects</a></li>
-                    <li><a href="practice.html" class="nav-link">Practice</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#subjects" class="nav-link active">Subjects</a></li>
+                    <li><a href="#practice" class="nav-link">Practice</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 
                 <div class="nav-auth">
-                    <a href="login.html" class="btn btn-login">Login</a>
-                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                    <a href="#login" class="btn btn-login">Login</a>
+                    <a href="#signup" class="btn btn-signup">Sign Up</a>
+                    <div class="theme-switch" id="theme-switch">
+                        <div class="theme-switch-icon">
+                            <i class="fas fa-sun sun-icon"></i>
+                            <i class="fas fa-moon moon-icon"></i>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="nav-toggle" id="nav-toggle">
@@ -45,7 +852,7 @@
             <div class="page-hero-content">
                 <h1>Our Subjects</h1>
                 <p>Comprehensive courses designed to help you excel in your academic journey</p>
-                <a href="practice.html" class="btn btn-white">
+                <a href="#practice" class="btn btn-white">
                     Start Practicing <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -53,7 +860,7 @@
     </section>
 
     <!-- Subjects Grid -->
-    <section class="subjects-detail">
+    <section id="subjects" class="subjects-detail">
         <div class="container">
             <div class="subjects-grid-detail">
                 <!-- Physics -->
@@ -82,18 +889,19 @@
                     <div class="subject-topics" style="display: none;">
                         <h4>Topics Covered:</h4>
                         <ul>
-                            <li>Mechanics</li>
-                            <li>Thermodynamics</li>
-                            <li>Electromagnetism</li>
-                            <li>Waves & Optics</li>
-                            <li>Modern Physics</li>
+                            <li>Classical Mechanics & Dynamics</li>
+                            <li>Thermodynamics & Heat Transfer</li>
+                            <li>Electromagnetism & Circuits</li>
+                            <li>Waves, Optics & Sound</li>
+                            <li>Modern Physics & Quantum Theory</li>
+                            <li>Nuclear Physics & Radioactivity</li>
                         </ul>
                     </div>
                     
                     <div class="subject-actions">
-                        <a href="practice.html?subject=physics" class="btn btn-primary">
+                        <button class="btn btn-primary practice-btn" data-subject="physics">
                             Practice Questions <i class="fas fa-arrow-right"></i>
-                        </a>
+                        </button>
                         <button class="btn btn-outline toggle-topics">View Topics</button>
                     </div>
                 </div>
@@ -124,18 +932,19 @@
                     <div class="subject-topics" style="display: none;">
                         <h4>Topics Covered:</h4>
                         <ul>
-                            <li>Atomic Structure</li>
-                            <li>Chemical Bonding</li>
-                            <li>Organic Chemistry</li>
-                            <li>Inorganic Chemistry</li>
-                            <li>Physical Chemistry</li>
+                            <li>Atomic Structure & Periodic Table</li>
+                            <li>Chemical Bonding & Molecular Geometry</li>
+                            <li>Organic Chemistry & Hydrocarbons</li>
+                            <li>Inorganic Chemistry & Compounds</li>
+                            <li>Physical Chemistry & Thermodynamics</li>
+                            <li>Analytical Chemistry & Spectroscopy</li>
                         </ul>
                     </div>
                     
                     <div class="subject-actions">
-                        <a href="practice.html?subject=chemistry" class="btn btn-primary">
+                        <button class="btn btn-primary practice-btn" data-subject="chemistry">
                             Practice Questions <i class="fas fa-arrow-right"></i>
-                        </a>
+                        </button>
                         <button class="btn btn-outline toggle-topics">View Topics</button>
                     </div>
                 </div>
@@ -166,18 +975,19 @@
                     <div class="subject-topics" style="display: none;">
                         <h4>Topics Covered:</h4>
                         <ul>
-                            <li>Cell Biology</li>
-                            <li>Genetics</li>
-                            <li>Evolution</li>
-                            <li>Ecology</li>
-                            <li>Human Physiology</li>
+                            <li>Cell Biology & Molecular Processes</li>
+                            <li>Genetics & Heredity</li>
+                            <li>Evolution & Natural Selection</li>
+                            <li>Ecology & Environmental Science</li>
+                            <li>Human Physiology & Anatomy</li>
+                            <li>Biotechnology & Genetic Engineering</li>
                         </ul>
                     </div>
                     
                     <div class="subject-actions">
-                        <a href="practice.html?subject=biology" class="btn btn-primary">
+                        <button class="btn btn-primary practice-btn" data-subject="biology">
                             Practice Questions <i class="fas fa-arrow-right"></i>
-                        </a>
+                        </button>
                         <button class="btn btn-outline toggle-topics">View Topics</button>
                     </div>
                 </div>
@@ -208,18 +1018,19 @@
                     <div class="subject-topics" style="display: none;">
                         <h4>Topics Covered:</h4>
                         <ul>
-                            <li>Algebra</li>
-                            <li>Geometry</li>
-                            <li>Trigonometry</li>
-                            <li>Calculus</li>
-                            <li>Statistics</li>
+                            <li>Advanced Algebra & Functions</li>
+                            <li>Geometry & Trigonometry</li>
+                            <li>Calculus & Differential Equations</li>
+                            <li>Statistics & Probability</li>
+                            <li>Linear Algebra & Matrices</li>
+                            <li>Complex Numbers & Mathematical Proofs</li>
                         </ul>
                     </div>
                     
                     <div class="subject-actions">
-                        <a href="practice.html?subject=mathematics" class="btn btn-primary">
+                        <button class="btn btn-primary practice-btn" data-subject="mathematics">
                             Practice Questions <i class="fas fa-arrow-right"></i>
-                        </a>
+                        </button>
                         <button class="btn btn-outline toggle-topics">View Topics</button>
                     </div>
                 </div>
@@ -250,18 +1061,19 @@
                     <div class="subject-topics" style="display: none;">
                         <h4>Topics Covered:</h4>
                         <ul>
-                            <li>Grammar</li>
-                            <li>Literature</li>
-                            <li>Creative Writing</li>
-                            <li>Essay Writing</li>
-                            <li>Reading Comprehension</li>
+                            <li>Advanced Grammar & Syntax</li>
+                            <li>Literature Analysis & Criticism</li>
+                            <li>Creative Writing & Poetry</li>
+                            <li>Academic Essay Writing</li>
+                            <li>Reading Comprehension & Critical Thinking</li>
+                            <li>Public Speaking & Communication</li>
                         </ul>
                     </div>
                     
                     <div class="subject-actions">
-                        <a href="practice.html?subject=english" class="btn btn-primary">
+                        <button class="btn btn-primary practice-btn" data-subject="english">
                             Practice Questions <i class="fas fa-arrow-right"></i>
-                        </a>
+                        </button>
                         <button class="btn btn-outline toggle-topics">View Topics</button>
                     </div>
                 </div>
@@ -292,24 +1104,65 @@
                     <div class="subject-topics" style="display: none;">
                         <h4>Topics Covered:</h4>
                         <ul>
-                            <li>Programming Basics</li>
-                            <li>Data Structures</li>
-                            <li>Algorithms</li>
-                            <li>Web Development</li>
-                            <li>Database Systems</li>
+                            <li>Programming Fundamentals & Logic</li>
+                            <li>Data Structures & Algorithms</li>
+                            <li>Object-Oriented Programming</li>
+                            <li>Web Development & Frameworks</li>
+                            <li>Database Design & Management</li>
+                            <li>Software Engineering & Project Management</li>
                         </ul>
                     </div>
                     
                     <div class="subject-actions">
-                        <a href="practice.html?subject=computer-science" class="btn btn-primary">
+                        <button class="btn btn-primary practice-btn" data-subject="computer-science">
                             Practice Questions <i class="fas fa-arrow-right"></i>
-                        </a>
+                        </button>
                         <button class="btn btn-outline toggle-topics">View Topics</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Practice Questions Modal -->
+    <div id="practice-modal" class="practice-modal">
+        <div class="practice-modal-content">
+            <div class="practice-modal-header">
+                <h2 id="modal-subject-title">
+                    <span id="modal-subject-icon">📊</span>
+                    <span id="modal-subject-name">Mathematics</span> Practice
+                </h2>
+                <button class="close" id="close-modal">&times;</button>
+            </div>
+            
+            <div class="practice-modal-body">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                
+                <div class="score-display">
+                    <h3>Current Score</h3>
+                    <div class="score-number" id="current-score">0/0</div>
+                </div>
+                
+                <div class="question-container" id="question-container">
+                    <!-- Questions will be dynamically loaded here -->
+                </div>
+                
+                <div class="question-actions">
+                    <button class="btn btn-secondary" id="prev-question" disabled>
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="btn btn-primary" id="next-question">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-primary" id="finish-quiz" style="display: none;">
+                        Finish Quiz <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Features Section -->
     <section class="subject-features">
@@ -353,15 +1206,15 @@
                 <h2>Ready to Start Learning?</h2>
                 <p>Choose your subject and begin your journey to academic excellence today</p>
                 <div class="cta-buttons">
-                    <a href="practice.html" class="btn btn-white">Start Practicing</a>
-                    <a href="signup.html" class="btn btn-outline">Sign Up Free</a>
+                    <a href="#subjects" class="btn btn-white">Start Practicing</a>
+                    <a href="#signup" class="btn btn-outline-white">Sign Up Free</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -376,9 +1229,9 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="subjects.html">Subjects</a></li>
-                        <li><a href="practice.html">Practice</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#subjects">Subjects</a></li>
+                        <li><a href="#practice">Practice</a></li>
                     </ul>
                 </div>
                 
@@ -387,7 +1240,7 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>267 7537185</span>
+                            <span>+267 75372185</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -407,6 +1260,495 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Theme Switcher
+        const themeSwitcher = document.getElementById('theme-switch');
+        
+        function getInitialTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        document.documentElement.setAttribute('data-theme', getInitialTheme());
+        
+        themeSwitcher.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Practice Questions Data
+        const questionsData = {
+            physics: [
+                {
+                    question: "A ball is thrown vertically upward with an initial velocity of 20 m/s. What is the maximum height reached? (g = 9.8 m/s²)",
+                    options: [
+                        "15.3 m",
+                        "20.4 m",
+                        "25.1 m",
+                        "30.6 m"
+                    ],
+                    correct: 1,
+                    difficulty: "medium",
+                    explanation: "Using v² = u² + 2as, where v = 0 at maximum height: 0 = 20² - 2(9.8)h, solving gives h = 20.4 m"
+                },
+                {
+                    question: "What is the wavelength of light with frequency 5 × 10¹⁴ Hz? (c = 3 × 10⁸ m/s)",
+                    options: [
+                        "400 nm",
+                        "500 nm",
+                        "600 nm",
+                        "700 nm"
+                    ],
+                    correct: 2,
+                    difficulty: "hard",
+                    explanation: "Using λ = c/f: λ = (3 × 10⁸)/(5 × 10¹⁴) = 6 × 10⁻⁷ m = 600 nm"
+                },
+                {
+                    question: "A 2 kg object accelerates at 5 m/s². What is the net force acting on it?",
+                    options: [
+                        "7 N",
+                        "10 N",
+                        "12 N",
+                        "15 N"
+                    ],
+                    correct: 1,
+                    difficulty: "easy",
+                    explanation: "Using Newton's second law: F = ma = 2 kg × 5 m/s² = 10 N"
+                }
+            ],
+            chemistry: [
+                {
+                    question: "What is the molecular formula of glucose?",
+                    options: [
+                        "C₆H₁₂O₆",
+                        "C₆H₁₀O₅",
+                        "C₅H₁₀O₅",
+                        "C₆H₁₄O₆"
+                    ],
+                    correct: 0,
+                    difficulty: "easy",
+                    explanation: "Glucose is a simple sugar with the molecular formula C₆H₁₂O₆"
+                },
+                {
+                    question: "What is the pH of a 0.01 M HCl solution?",
+                    options: [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    correct: 1,
+                    difficulty: "medium",
+                    explanation: "HCl is a strong acid, so [H⁺] = 0.01 M. pH = -log(0.01) = 2"
+                },
+                {
+                    question: "Which orbital can hold a maximum of 10 electrons?",
+                    options: [
+                        "s orbital",
+                        "p orbital",
+                        "d orbital",
+                        "f orbital"
+                    ],
+                    correct: 2,
+                    difficulty: "medium",
+                    explanation: "d orbitals have 5 sub-orbitals, each holding 2 electrons, for a total of 10 electrons"
+                }
+            ],
+            biology: [
+                {
+                    question: "What is the powerhouse of the cell?",
+                    options: [
+                        "Nucleus",
+                        "Mitochondria",
+                        "Ribosome",
+                        "Endoplasmic Reticulum"
+                    ],
+                    correct: 1,
+                    difficulty: "easy",
+                    explanation: "Mitochondria produce ATP through cellular respiration, earning them the nickname 'powerhouse of the cell'"
+                },
+                {
+                    question: "Which process converts light energy into chemical energy?",
+                    options: [
+                        "Cellular respiration",
+                        "Photosynthesis",
+                        "Fermentation",
+                        "Glycolysis"
+                    ],
+                    correct: 1,
+                    difficulty: "easy",
+                    explanation: "Photosynthesis converts light energy into chemical energy stored in glucose molecules"
+                },
+                {
+                    question: "What percentage of DNA do humans share with chimpanzees?",
+                    options: [
+                        "95%",
+                        "96%",
+                        "98%",
+                        "99%"
+                    ],
+                    correct: 2,
+                    difficulty: "hard",
+                    explanation: "Humans and chimpanzees share approximately 98% of their DNA sequences"
+                }
+            ],
+            mathematics: [
+                {
+                    question: "What is the derivative of x³ + 2x² - 5x + 3?",
+                    options: [
+                        "3x² + 4x - 5",
+                        "3x² + 2x - 5",
+                        "x² + 4x - 5",
+                        "3x² + 4x + 5"
+                    ],
+                    correct: 0,
+                    difficulty: "medium",
+                    explanation: "Using power rule: d/dx(x³) = 3x², d/dx(2x²) = 4x, d/dx(-5x) = -5, d/dx(3) = 0"
+                },
+                {
+                    question: "Solve for x: 2x + 5 = 17",
+                    options: [
+                        "x = 5",
+                        "x = 6",
+                        "x = 7",
+                        "x = 8"
+                    ],
+                    correct: 1,
+                    difficulty: "easy",
+                    explanation: "2x + 5 = 17 → 2x = 12 → x = 6"
+                },
+                {
+                    question: "What is the integral of cos(x)?",
+                    options: [
+                        "sin(x) + C",
+                        "-sin(x) + C",
+                        "cos(x) + C",
+                        "-cos(x) + C"
+                    ],
+                    correct: 0,
+                    difficulty: "medium",
+                    explanation: "The integral of cos(x) is sin(x) + C, where C is the constant of integration"
+                }
+            ],
+            english: [
+                {
+                    question: "Which literary device is used in 'The wind whispered through the trees'?",
+                    options: [
+                        "Metaphor",
+                        "Simile",
+                        "Personification",
+                        "Alliteration"
+                    ],
+                    correct: 2,
+                    difficulty: "easy",
+                    explanation: "Personification gives human characteristics (whispering) to non-human things (wind)"
+                },
+                {
+                    question: "What is the correct past participle of 'write'?",
+                    options: [
+                        "wrote",
+                        "written",
+                        "writing",
+                        "writes"
+                    ],
+                    correct: 1,
+                    difficulty: "easy",
+                    explanation: "The past participle of 'write' is 'written' (write, wrote, written)"
+                },
+                {
+                    question: "In which century did Shakespeare live?",
+                    options: [
+                        "15th century",
+                        "16th century",
+                        "17th century",
+                        "18th century"
+                    ],
+                    correct: 1,
+                    difficulty: "medium",
+                    explanation: "William Shakespeare lived from 1564 to 1616, primarily in the 16th century"
+                }
+            ],
+            "computer-science": [
+                {
+                    question: "What does 'HTML' stand for?",
+                    options: [
+                        "Hypertext Markup Language",
+                        "High Tech Modern Language",
+                        "Home Tool Markup Language",
+                        "Hyperlink and Text Markup Language"
+                    ],
+                    correct: 0,
+                    difficulty: "easy",
+                    explanation: "HTML stands for Hypertext Markup Language, used for creating web pages"
+                },
+                {
+                    question: "Which data structure follows LIFO (Last In, First Out) principle?",
+                    options: [
+                        "Queue",
+                        "Array",
+                        "Stack",
+                        "Linked List"
+                    ],
+                    correct: 2,
+                    difficulty: "medium",
+                    explanation: "A stack follows LIFO principle where the last element added is the first one removed"
+                },
+                {
+                    question: "What is the time complexity of binary search?",
+                    options: [
+                        "O(n)",
+                        "O(log n)",
+                        "O(n²)",
+                        "O(1)"
+                    ],
+                    correct: 1,
+                    difficulty: "hard",
+                    explanation: "Binary search has O(log n) time complexity as it halves the search space in each iteration"
+                }
+            ]
+        };
+
+        // Practice Quiz Functionality
+        let currentSubject = '';
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let score = 0;
+
+        // Subject icons mapping
+        const subjectIcons = {
+            physics: '⚛️',
+            chemistry: '🧪',
+            biology: '🧬',
+            mathematics: '📊',
+            english: '📚',
+            'computer-science': '💻'
+        };
+
+        // Toggle topics visibility
+        document.querySelectorAll('.toggle-topics').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.subject-detail-card');
+                const topics = card.querySelector('.subject-topics');
+                
+                if (topics.style.display === 'none') {
+                    topics.style.display = 'block';
+                    this.textContent = 'Hide Topics';
+                } else {
+                    topics.style.display = 'none';
+                    this.textContent = 'View Topics';
+                }
+            });
+        });
+
+        // Practice button functionality
+        document.querySelectorAll('.practice-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const subject = this.getAttribute('data-subject');
+                startPracticeQuiz(subject);
+            });
+        });
+
+        function startPracticeQuiz(subject) {
+            currentSubject = subject;
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            score = 0;
+
+            // Set modal title
+            document.getElementById('modal-subject-icon').textContent = subjectIcons[subject];
+            document.getElementById('modal-subject-name').textContent = subject.charAt(0).toUpperCase() + subject.slice(1).replace('-', ' ');
+
+            // Show modal
+            document.getElementById('practice-modal').style.display = 'block';
+
+            // Load first question
+            loadQuestion();
+            updateProgress();
+            updateScore();
+        }
+
+        function loadQuestion() {
+            const questions = questionsData[currentSubject];
+            const question = questions[currentQuestionIndex];
+            
+            const questionContainer = document.getElementById('question-container');
+            
+            questionContainer.innerHTML = `
+                <div class="question-header">
+                    <div class="question-number">Question ${currentQuestionIndex + 1} of ${questions.length}</div>
+                    <div class="difficulty-badge difficulty-${question.difficulty}">${question.difficulty.toUpperCase()}</div>
+                </div>
+                
+                <div class="question-text">${question.question}</div>
+                
+                <div class="question-options">
+                    ${question.options.map((option, index) => `
+                        <div class="option" data-index="${index}">
+                            <strong>${String.fromCharCode(65 + index)}.</strong> ${option}
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="question-feedback" id="question-feedback"></div>
+            `;
+
+            // Add click handlers to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    selectOption(parseInt(this.getAttribute('data-index')));
+                });
+            });
+
+            // Update navigation buttons
+            document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                document.getElementById('next-question').style.display = 'none';
+                document.getElementById('finish-quiz').style.display = 'inline-flex';
+            } else {
+                document.getElementById('next-question').style.display = 'inline-flex';
+                document.getElementById('finish-quiz').style.display = 'none';
+            }
+
+            // Restore previous answer if exists
+            if (userAnswers[currentQuestionIndex] !== undefined) {
+                const selectedOption = document.querySelector(`[data-index="${userAnswers[currentQuestionIndex]}"]`);
+                if (selectedOption) {
+                    selectedOption.classList.add('selected');
+                }
+            }
+        }
+
+        function selectOption(optionIndex) {
+            // Remove previous selection
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            // Mark selected option
+            const selectedOption = document.querySelector(`[data-index="${optionIndex}"]`);
+            selectedOption.classList.add('selected');
+
+            // Store answer
+            userAnswers[currentQuestionIndex] = optionIndex;
+
+            // Show feedback
+            const question = questionsData[currentSubject][currentQuestionIndex];
+            const feedback = document.getElementById('question-feedback');
+            
+            if (optionIndex === question.correct) {
+                selectedOption.classList.add('correct');
+                feedback.className = 'question-feedback feedback-correct';
+                feedback.innerHTML = `<strong>Correct!</strong> ${question.explanation}`;
+            } else {
+                selectedOption.classList.add('incorrect');
+                document.querySelector(`[data-index="${question.correct}"]`).classList.add('correct');
+                feedback.className = 'question-feedback feedback-incorrect';
+                feedback.innerHTML = `<strong>Incorrect.</strong> ${question.explanation}`;
+            }
+            
+            feedback.style.display = 'block';
+
+            // Update score
+            updateScore();
+        }
+
+        function updateProgress() {
+            const questions = questionsData[currentSubject];
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+        }
+
+        function updateScore() {
+            const questions = questionsData[currentSubject];
+            let correctAnswers = 0;
+            
+            userAnswers.forEach((answer, index) => {
+                if (answer === questions[index].correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            document.getElementById('current-score').textContent = `${correctAnswers}/${userAnswers.length}`;
+        }
+
+        // Navigation buttons
+        document.getElementById('prev-question').addEventListener('click', function() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+                updateProgress();
+            }
+        });
+
+        document.getElementById('next-question').addEventListener('click', function() {
+            const questions = questionsData[currentSubject];
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+                updateProgress();
+            }
+        });
+
+        document.getElementById('finish-quiz').addEventListener('click', function() {
+            finishQuiz();
+        });
+
+        function finishQuiz() {
+            const questions = questionsData[currentSubject];
+            let correctAnswers = 0;
+            
+            userAnswers.forEach((answer, index) => {
+                if (answer === questions[index].correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            const percentage = Math.round((correctAnswers / questions.length) * 100);
+            
+            alert(`Quiz Complete!\n\nYour Score: ${correctAnswers}/${questions.length} (${percentage}%)\n\nGreat job! Keep practicing to improve your skills.`);
+            
+            document.getElementById('practice-modal').style.display = 'none';
+        }
+
+        // Close modal
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('practice-modal').style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('practice-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Mobile navigation toggle
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
