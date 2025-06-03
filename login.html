@@ -1,168 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - INTELLECT</title>
+    <title>INTELLECT - Online Tutoring Platform</title>
+    <meta name="description" content="Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Ensure this path is correct -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <nav class="nav">
+            <nav class="nav" role="navigation" aria-label="Main navigation">
                 <div class="nav-brand">
-                    <i class="fas fa-book-open"></i>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
                     <span>INTELLECT</span>
                 </div>
                 
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="subjects.html" class="nav-link">Subjects</a></li>
-                    <li><a href="practice.html" class="nav-link">Practice</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="#home" class="nav-link active" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                    <li role="none"><a href="#subjects" class="nav-link" role="menuitem">Subjects</a></li>
+                    <li role="none"><a href="#practice" class="nav-link" role="menuitem">Practice</a></li>
+                    <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
                 </ul>
                 
                 <div class="nav-auth">
-                    <a href="login.html" class="btn btn-login active">Login</a>
+                    <a href="login.html" class="btn btn-login">Login</a>
                     <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                    <button class="theme-switch" id="theme-switch" aria-label="Toggle dark mode">
+                        <div class="theme-switch-icon">
+                            <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
+                            <i class="fas fa-moon moon-icon" aria-hidden="true"></i>
+                        </div>
+                    </button>
                 </div>
                 
-                <div class="nav-toggle" id="nav-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Login Section -->
-    <section class="auth-section">
-        <div class="container">
-            <div class="auth-container">
-                <!-- Header -->
-                <div class="auth-header">
-                    <div class="auth-icon">
-                        <i class="fas fa-sign-in-alt"></i>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span id="typing-text" aria-live="polite"></span>
+                        <span class="cursor" aria-hidden="true">|</span>
+                    </h1>
+                    <p class="hero-subtitle">Unlock your potential with personalized online tutoring</p>
+                    <div class="hero-price-highlight">
+                        <span class="price-badge">Starting from P199/month</span>
                     </div>
-                    <h2>Welcome Back</h2>
-                    <p>Sign in to your INTELLECT account</p>
-                </div>
-
-                <!-- Login Form -->
-                <div class="auth-form">
-                    <form id="login-form" action="login-handler.php" method="POST"> <!-- Specify the form action -->
-                        <!-- Email Field -->
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <div class="input-group">
-                                <i class="fas fa-envelope"></i>
-                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                            </div>
-                            <span class="error-message" id="email-error"></span>
-                        </div>
-
-                        <!-- Password Field -->
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <div class="input-group">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                                <button type="button" class="password-toggle" id="password-toggle" aria-label="Toggle password visibility">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                            <span class="error-message" id="password-error"></span>
-                        </div>
-
-                        <!-- Remember Me & Forgot Password -->
-                        <div class="form-options">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="remember-me" name="remember-me">
-                                <span class="checkmark"></span>
-                                Remember me
-                            </label>
-                            <a href="#" class="forgot-password">Forgot password?</a>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn btn-login-primary">
-                            <i class="fas fa-sign-in-alt"></i>
-                            Sign In
-                        </button>
-                    </form>
-
-                    <!-- Divider -->
-                    <div class="auth-divider">
-                        <span>Or continue with</span>
-                    </div>
-
-                    <!-- Social Login -->
-                    <div class="social-login">
-                        <button class="btn btn-social">
-                            <i class="fab fa-google"></i>
-                            Google
-                        </button>
-                        <button class="btn btn-social">
-                            <i class="fab fa-facebook"></i>
-                            Facebook
-                        </button>
-                    </div>
-
-                    <!-- Sign Up Link -->
-                    <div class="auth-switch">
-                        <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+                    <div class="hero-buttons">
+                        <a href="#pricing" class="btn btn-primary">
+                            View Pricing <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="#about" class="btn btn-secondary">
+                            Learn More <i class="fas fa-book-open" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <!-- Floating Elements -->
+            <div class="floating-element floating-1" aria-hidden="true"></div>
+            <div class="floating-element floating-2" aria-hidden="true"></div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="about" class="features">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Why Choose INTELLECT?</h2>
+                    <p class="section-subtitle">Experience the future of learning with our innovative platform designed for academic success</p>
+                </header>
+                
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Expert Tutors</h3>
+                        <p>Learn from qualified professionals with years of teaching experience</p>
+                    </article>
+                    
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Interactive Learning</h3>
+                        <p>Engage with dynamic content and real-time feedback systems</p>
+                    </article>
+                    
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Proven Results</h3>
+                        <p>Track your progress and achieve measurable academic improvements</p>
+                    </article>
+                    
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Flexible Schedule</h3>
+                        <p>Learn at your own pace with 24/7 access to course materials</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Choose Your Learning Plan</h2>
+                    <p class="section-subtitle">Affordable pricing plans designed for every student's needs</p>
+                    <div class="currency-note">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                        <span>All prices are in Botswana Pula (BWP)</span>
+                    </div>
+                </header>
+                
+                <div class="pricing-grid">
+                    <!-- Basic Plan -->
+                    <article class="pricing-card">
+                        <header class="plan-header">
+                            <h3>Basic Plan</h3>
+                            <div class="plan-price">
+                                <span class="currency">P</span>
+                                <span class="amount">199</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p class="plan-description">Perfect for getting started with online learning</p>
+                        </header>
+                        
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Access to 3 subjects</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> 100 practice questions per month</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Basic progress tracking</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Email support</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Mobile app access</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-plan" data-plan="basic">
+                            Choose Basic Plan
+                        </button>
+                    </article>
+
+                    <!-- Standard Plan (Most Popular) -->
+                    <article class="pricing-card popular">
+                        <div class="popular-badge">Most Popular</div>
+                        <header class="plan-header">
+                            <h3>Standard Plan</h3>
+                            <div class="plan-price">
+                                <span class="currency">P</span>
+                                <span class="amount">399</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p class="plan-description">Ideal for serious students seeking comprehensive learning</p>
+                        </header>
+                        
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Access to all 6 subjects</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Unlimited practice questions</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Advanced progress analytics</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Live chat support</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Downloadable study materials</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> 2 one-on-one tutoring sessions</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-plan btn-popular" data-plan="standard">
+                            Choose Standard Plan
+                        </button>
+                    </article>
+
+                    <!-- Premium Plan -->
+                    <article class="pricing-card">
+                        <header class="plan-header">
+                            <h3>Premium Plan</h3>
+                            <div class="plan-price">
+                                <span class="currency">P</span>
+                                <span class="amount">699</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p class="plan-description">Complete learning solution with premium features</p>
+                        </header>
+                        
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Everything in Standard Plan</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Unlimited one-on-one tutoring</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Priority support (24/7)</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Custom study plans</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Exam preparation materials</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Certificate of completion</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-plan" data-plan="premium">
+                            Choose Premium Plan
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subjects Preview -->
+        <section id="subjects" class="subjects-preview">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Our Subjects</h2>
+                    <p class="section-subtitle">Master these essential subjects with our comprehensive curriculum</p>
+                </header>
+                
+                <div class="subjects-grid">
+                    <a href="#physics" class="subject-card">
+                        <div class="subject-icon" aria-hidden="true">⚛️</div>
+                        <h3>Physics</h3>
+                    </a>
+                    
+                    <a href="#chemistry" class="subject-card">
+                        <div class="subject-icon" aria-hidden="true">🧪</div>
+                        <h3>Chemistry</h3>
+                    </a>
+                    
+                    <a href="#biology" class="subject-card">
+                        <div class="subject-icon" aria-hidden="true">🧬</div>
+                        <h3>Biology</h3>
+                    </a>
+                    
+                    <a href="#mathematics" class="subject-card">
+                        <div class="subject-icon" aria-hidden="true">📊</div>
+                        <h3>Mathematics</h3>
+                    </a>
+                    
+                    <a href="#english" class="subject-card">
+                        <div class="subject-icon" aria-hidden="true">📚</div>
+                        <h3>English</h3>
+                    </a>
+                    
+                    <a href="#computer-science" class="subject-card">
+                        <div class="subject-icon" aria-hidden="true">💻</div>
+                        <h3>Computer Science</h3>
+                    </a>
+                </div>
+                
+                <div class="text-center">
+                    <a href="#subjects" class="btn btn-primary">Explore All Subjects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title">Student Success Stories</h2>
+                </header>
+                
+                <div class="testimonials-grid">
+                    <article class="testimonial-card">
+                        <div class="stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote>
+                            <p>"INTELLECT helped me improve my math grades from C to A+ in just 3 months! The payment was so easy with Orange Money."</p>
+                        </blockquote>
+                        <footer class="testimonial-author">
+                            <strong>Keabetswe M.</strong>
+                            <span>Grade 12 • Mathematics</span>
+                        </footer>
+                    </article>
+                    
+                    <article class="testimonial-card">
+                        <div class="stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote>
+                            <p>"The interactive practice questions made physics concepts so much clearer. Worth every pula!"</p>
+                        </blockquote>
+                        <footer class="testimonial-author">
+                            <strong>Thabo K.</strong>
+                            <span>Grade 11 • Physics</span>
+                        </footer>
+                    </article>
+                    
+                    <article class="testimonial-card">
+                        <div class="stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote>
+                            <p>"Amazing platform! The tutors are patient and explain everything perfectly. The Standard plan is perfect for my needs."</p>
+                        </blockquote>
+                        <footer class="testimonial-author">
+                            <strong>Boitumelo L.</strong>
+                            <span>Grade 10 • Chemistry</span>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Money Back Guarantee -->
+        <section class="guarantee-section">
+            <div class="container">
+                <div class="guarantee-content">
+                    <div class="guarantee-icon" aria-hidden="true">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="guarantee-text">
+                        <h3>30-Day Money Back Guarantee</h3>
+                        <p>Not satisfied with your learning experience? Get a full refund within 30 days, no questions asked.</p>
+                    </div>
+                    <div class="guarantee-features">
+                        <div class="guarantee-feature">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
+                            <span>Secure Payments</span>
+                        </div>
+                        <div class="guarantee-feature">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
+                            <span>Instant Access</span>
+                        </div>
+                        <div class="guarantee-feature">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
+                            <span>Cancel Anytime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Start Your Learning Journey?</h2>
+                    <p>Join thousands of students who have transformed their academic performance</p>
+                    <div class="cta-buttons">
+                        <a href="#pricing" class="btn btn-white">Choose Your Plan</a>
+                        <a href="#contact" class="btn btn-outline">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-book-open" aria-hidden="true"></i>
                         <span>INTELLECT</span>
                     </div>
                     <p>Empowering students to achieve academic excellence through personalized online tutoring and interactive learning experiences.</p>
+                    <div class="payment-security">
+                        <p><i class="fas fa-lock" aria-hidden="true"></i> Secure payments powered by industry-standard encryption</p>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="subjects.html">Subjects</a></li>
-                        <li><a href="practice.html">Practice</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#subjects">Subjects</a></li>
+                        <li><a href="#practice">Practice</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Contact Info</h3>
-                    <div class="contact-info">
+                    <address class="contact-info">
                         <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>267 7537185</span>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>+267 75372185</span>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                             <span>nthububw@gmail.com</span>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             <span>Block 6 Makuruku Street, Gaborone</span>
                         </div>
-                    </div>
+                    </address>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2025 INTELLECT. All rights reserved. Empowering minds, one student at a time.</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#refund">Refund Policy</a>
+                </div>
             </div>
         </div>
     </footer>
