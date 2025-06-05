@@ -41,3 +41,62 @@ document.addEventListener('DOMContentLoaded', function() {
         function typeText() {
             if (index < text.length) {
                 typingElement.text
+// Login Modal Functionality
+const loginBtn = document.querySelector('.btn-login');
+const loginModal = document.getElementById('login-modal');
+const closeModal = document.querySelector('.close-modal');
+const loginForm = document.getElementById('login-form');
+
+// Open modal when login button is clicked
+loginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    loginModal.classList.add('active');
+    loginModal.style.display = 'flex';
+    setTimeout(() => {
+        document.body.style.overflow = 'hidden';
+    }, 10);
+});
+
+// Close modal when X is clicked
+closeModal.addEventListener('click', function() {
+    loginModal.classList.remove('active');
+    setTimeout(() => {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 300);
+});
+
+// Close modal when clicking outside content
+loginModal.addEventListener('click', function(e) {
+    if (e.target === loginModal) {
+        loginModal.classList.remove('active');
+        setTimeout(() => {
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+});
+
+// Handle form submission
+loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    
+    // Here you would typically make an API call to authenticate the user
+    // For demonstration, we'll just log to console and show an alert
+    console.log('Login attempt with:', { email, password });
+    
+    // Simulate successful login
+    alert('Login successful! (This is a demo)');
+    
+    // Close the modal
+    loginModal.classList.remove('active');
+    setTimeout(() => {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 300);
+    
+    // In a real app, you would redirect or update the UI here
+});
