@@ -32,6 +32,20 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
+        .bank-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .currency-indicator {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
         nav {
             display: flex;
             justify-content: space-between;
@@ -65,6 +79,28 @@
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #2b6cb0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
         }
         
         .account-cards {
@@ -82,6 +118,11 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             border-left: 4px solid #2b6cb0;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
         
         .card h3 {
@@ -93,6 +134,12 @@
             font-size: 24px;
             font-weight: bold;
             color: #2d3748;
+        }
+        
+        .currency {
+            font-size: 16px;
+            color: #718096;
+            margin-right: 5px;
         }
         
         .quick-actions {
@@ -178,13 +225,22 @@
             nav a {
                 margin-bottom: 10px;
             }
+            
+            .welcome {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Banking System</h1>
+            <div class="bank-info">
+                <h1>Banking System</h1>
+                <div class="currency-indicator">Currency: BWP</div>
+            </div>
             <nav>
                 <a href="#">Home</a>
                 <a href="#">Accounts</a>
@@ -195,7 +251,11 @@
         
         <div class="dashboard">
             <div class="welcome">
-                <h2>Welcome, John Doe</h2>
+                <div class="user-info">
+                    <div class="avatar">JD</div>
+                    <h2>Welcome, John Doe</h2>
+                </div>
+                <div class="current-date">May 15, 2023</div>
             </div>
             
             <div class="account-summary">
@@ -203,11 +263,15 @@
                 <div class="account-cards">
                     <div class="card">
                         <h3>Savings Account</h3>
-                        <p>Balance: $1000.00</p>
+                        <p><span class="currency">BWP</span>1,000.00</p>
                     </div>
                     <div class="card">
                         <h3>Investment Account</h3>
-                        <p>Balance: $2500.00</p>
+                        <p><span class="currency">BWP</span>2,500.00</p>
+                    </div>
+                    <div class="card">
+                        <h3>Cheque Account</h3>
+                        <p><span class="currency">BWP</span>3,750.00</p>
                     </div>
                 </div>
             </div>
@@ -218,6 +282,7 @@
                     <button class="btn btn-primary">Transfer</button>
                     <button class="btn btn-primary">Pay Bill</button>
                     <button class="btn btn-primary">Open New Account</button>
+                    <button class="btn btn-primary">Apply for Loan</button>
                 </div>
             </div>
             
@@ -228,24 +293,34 @@
                         <tr>
                             <th>Date</th>
                             <th>Description</th>
-                            <th>Amount</th>
+                            <th>Amount (BWP)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>15/05/2023</td>
+                            <td>Salary Deposit</td>
+                            <td class="positive">+P5,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>12/05/2023</td>
+                            <td>Utility Payment</td>
+                            <td class="negative">-P450.50</td>
+                        </tr>
+                        <tr>
                             <td>10/05/2023</td>
-                            <td>Deposit</td>
-                            <td class="positive">+$500.00</td>
+                            <td>Mobile Transfer</td>
+                            <td class="positive">+P1,200.00</td>
                         </tr>
                         <tr>
                             <td>09/05/2023</td>
-                            <td>Interest</td>
-                            <td class="positive">+$5.00</td>
+                            <td>Interest Credit</td>
+                            <td class="positive">+P125.30</td>
                         </tr>
                         <tr>
                             <td>08/05/2023</td>
-                            <td>Withdrawal</td>
-                            <td class="negative">-$200.00</td>
+                            <td>ATM Withdrawal</td>
+                            <td class="negative">-P500.00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -253,7 +328,7 @@
         </div>
         
         <footer>
-            <p>© 2023 Banking System. All rights reserved. | Secure Banking</p>
+            <p>© 2023 Banking System Botswana. All rights reserved. | Secure Banking</p>
         </footer>
     </div>
 </body>
